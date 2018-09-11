@@ -16,7 +16,7 @@ class CreateProvinsisTable extends Migration
         Schema::create('provinsis', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_provinsi');
-            
+            $table->bigInteger('jumlah_penduduk');
             $table->timestamps();
         });
     }
