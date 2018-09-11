@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProvinsisTable extends Migration
+class CreateWisatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateProvinsisTable extends Migration
      */
     public function up()
     {
-        Schema::create('provinsis', function (Blueprint $table) {
+        Schema::create('wisatas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_provinsi');
-            $table->bigInteger('jumlah_penduduk');
+            $table->string('nama');
+            $table->string('lokasi');
+            $table->integer('provinsi_id');
+            $table->integer('kabupaten_id');
+            $table->integer('kecamatan_id');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateProvinsisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provinsis');
+        Schema::dropIfExists('wisatas');
     }
 }
