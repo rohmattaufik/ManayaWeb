@@ -10,7 +10,7 @@ class LokasiBuzzer extends Model
      * @var array
      */
     protected $fillable = [
-        'nama_kecamatan', 'kabupaten_id'
+        'buzzer_id', 'wisata_id', 'waktu_mulai', 'waktu_selesai', 'poin'
     ];
 
 }

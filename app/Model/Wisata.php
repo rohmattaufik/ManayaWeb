@@ -29,7 +29,7 @@ class Wisata extends Model
 
     public function Kecamatans()
     {
-        return $this->belongsTo('App\Model\Kecamatans');
+        return $this->belongsTo('App\Model\Kecamatan');
     }
 
 }

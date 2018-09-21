@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDiskonsTable extends Migration
+class CreateUserAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateDiskonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('diskons', function (Blueprint $table) {
+        Schema::create('user_admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_diskon');
-            $table->integer('flag_active');
-            $table->integer('jumlah_persen');
+            $table->string('nama');
+            $table->integer('role');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateDiskonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diskons');
+        Schema::dropIfExists('user_admins');
     }
 }

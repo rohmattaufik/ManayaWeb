@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// wisatawan
+Route::get('wisatawan','WisatawanController@index');
+Route::post('/wisatawan/store','WisatawanController@store');
+Route::post('/wisatawan/{id}/update','WisatawanController@update');

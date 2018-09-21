@@ -10,7 +10,7 @@ class Diskon extends Model
      * @var array
      */
     protected $fillable = [
-        'nama_diskon', 'tanggal_mulai', 'tanggal_selesai', 'jumlah_persen'
+        'nama_diskon', 'flag_active', 'jumlah_persen'
     ];
 
     public function diskonFors()

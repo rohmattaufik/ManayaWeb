@@ -6,15 +6,11 @@ class DiskonFor extends Model
 {
     /**
      * The attributes that are mass assignable.
-     *
+     * Note : for_type => 0 for wisatawan, 1 for Kategori Wisatawan
      * @var array
      */
     protected $fillable = [
-        'nama_diskon', 'tanggal_mulai', 'tanggal_selesai', 'jumlah_persen'
+        'diskon_id', 'for_type', 'for_id'
     ];
 
-    public function diskonFors()
-    {
-        return $this->hasMany('App\Model\DiskonFor');
-    }
 }
