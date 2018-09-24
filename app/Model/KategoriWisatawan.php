@@ -2,7 +2,7 @@
 namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 
-class KategoriWisatawans extends Model
+class KategoriWisatawan extends Model
 {
     /**
      * The attributes that are mass assignable.
