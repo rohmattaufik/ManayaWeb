@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('wisatawan','WisatawanController@index');
 Route::post('/wisatawan/store','WisatawanController@store');
 Route::post('/wisatawan/{id}/update','WisatawanController@update');
+
+//UserAdmin
+//Route::get('test','DashboardController@index');
+Route::get('test','LaporanController@index');
