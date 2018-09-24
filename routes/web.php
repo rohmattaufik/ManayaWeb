@@ -19,6 +19,14 @@ Route::get('/login', function () {
     return view('admin.login');
 });
 
+Route::prefix('admin')->group(function () {
+    //master parameter
+    Route::get('dashboard',  function () {
+        return view('admin.dashboard');
+    });
+
+});
+
 // wisatawan
 Route::get('wisatawan','WisatawanController@index');
 Route::post('/wisatawan/store','WisatawanController@store');
