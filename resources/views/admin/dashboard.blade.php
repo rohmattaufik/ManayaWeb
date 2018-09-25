@@ -535,17 +535,17 @@
     </script>
 
 
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="{{ URL::asset('adminlte/dist/js/demo.js') }}"></script>
+    {{--<!-- OPTIONAL SCRIPTS -->--}}
+    {{--<script src="{{ URL::asset('adminlte/dist/js/demo.js') }}"></script>--}}
 
-    <!-- PAGE PLUGINS -->
-    <!-- SparkLine -->
-    <script src="{{ URL::asset('adminlte/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-    <!-- jVectorMap -->
-    <script src="{{ URL::asset('adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-    <script src="{{ URL::asset('adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <!-- SlimScroll 1.3.0 -->
-    <script src="{{ URL::asset('adminlte/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    {{--<!-- PAGE PLUGINS -->--}}
+    {{--<!-- SparkLine -->--}}
+    {{--<script src="{{ URL::asset('adminlte/plugins/sparkline/jquery.sparkline.min.js') }}"></script>--}}
+    {{--<!-- jVectorMap -->--}}
+    {{--<script src="{{ URL::asset('adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>--}}
+    {{--<script src="{{ URL::asset('adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>--}}
+    {{--<!-- SlimScroll 1.3.0 -->--}}
+    {{--<script src="{{ URL::asset('adminlte/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>--}}
     <!-- ChartJS 1.0.2 -->
     <script src="{{ URL::asset('adminlte/plugins/chartjs-old/Chart.min.js') }}"></script>
 
