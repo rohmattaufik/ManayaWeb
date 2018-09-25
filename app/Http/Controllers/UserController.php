@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
+use Illuminate\Support\Facades\Session;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends Controller
@@ -73,4 +74,15 @@ class UserController extends Controller
 
                 return response()->json(compact('user'));
         }
+
+    public function checkLoginRole(Request $request) {
+        if($request->username == 'superadmin') {
+            return redirect('super-admin/dashboard');
+        } else if($request->username == 'admin') {
+            return redirect('admin/dashboard');
+        }
+
+        Session::flash('gagal','Gagal Login');
+        return redirect('/');
+    }
 }

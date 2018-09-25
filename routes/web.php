@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::post('/checklogin', 'UserController@checkLoginRole');
+
+Route::post('/logout', function () {
+    return view('admin.login');
 });
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('admin.login');
 });
 

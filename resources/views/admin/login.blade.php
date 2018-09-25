@@ -21,10 +21,13 @@
             <div class="card">
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Ticketing Solution</p>
+                    @if(Session::get('gagal'))
+                        <p style="color: red;" class="login-box-msg">{{ Session::get('gagal') }}</p>
+                    @endif
 
-                    <form action="../../index2.html" method="post">
+                    <form action="{{ url(action(('UserController@checkLoginRole'))) }}" method="post">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Username">
+                            <input type="text" class="form-control" name="username" placeholder="Username">
                             <div class="input-group-append">
                                 <span class="fa fa-envelope input-group-text"></span>
                             </div>
@@ -45,7 +48,7 @@
                             </div>
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                                <button type="submit" class="btn btn-primary btn-block btn-flat" >Sign In</button>
                             </div>
                             <!-- /.col -->
                         </div>

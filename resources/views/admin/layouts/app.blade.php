@@ -32,12 +32,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
-<script src="{{ URL::asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ URL::asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ URL::asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+@include('admin.layouts.scripts')
+
+@yield('new-scripts')
 
 </body>
 </html>

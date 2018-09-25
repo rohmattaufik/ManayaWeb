@@ -14,3 +14,6 @@
 <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/iCheck/square/blue.css') }}">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" href="{{ URL::asset('img/logocolor.png') }}">
