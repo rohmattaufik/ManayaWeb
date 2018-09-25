@@ -25,24 +25,43 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
+                {{--Dashboard Admin--}}
+                <li class="nav-item">
+                    <a href="{{ url('admin/dashboard') }}"
+                       class="nav-link {{
+                                Request::is('admin/dashboard/*') ? 'active' : '' ||
+                                Request::is('admin/dashboard') ? 'active' : ''
+                                }}">
+                        <i class="nav-icon fa fa-area-chart"></i>
+                        <p>
+                            Dashboard
+                            {{--<span class="right badge badge-danger">New</span>--}}
+                        </p>
+                    </a>
+                </li>
+                {{--End Dashboard Admin--}}
+
                 {{--Laporan--}}
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fa fa-dashboard"></i>
+                    <a href="{{ url('admin/laporan') }}"
+                       class="nav-link {{
+                                Request::is('admin/laporan/*') ? 'active' : '' ||
+                                Request::is('admin/laporan') ? 'active' : ''
+                                }}">
+                        <i class="nav-icon fa fa-sticky-note"></i>
                         <p>
                             Laporan
-                            {{--<i class="right fa fa-angle-left"></i>--}}
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>1. Finance</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>2. Pattern People</p>
                             </a>
@@ -82,7 +101,7 @@
                 {{--big data--}}
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-dashboard"></i>
+                        <i class="nav-icon fa fa-ticket"></i>
                         <p>
                             Pengaturan Tiket
                             {{--<i class="right fa fa-angle-left"></i>--}}

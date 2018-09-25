@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-        Anything you want
+        Manya Ticketing Solution
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a target="_blank" href="http://matabiru.net">matabiru.net</a>.</strong> All rights reserved.
 </footer>

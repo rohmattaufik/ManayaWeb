@@ -26,8 +26,12 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->group(function () {
-    //master parameter
+
     Route::get('dashboard',  function () {
+        return view('admin.dashboard');
+    });
+
+    Route::get('laporan',  function () {
         return view('admin.dashboard');
     });
 
