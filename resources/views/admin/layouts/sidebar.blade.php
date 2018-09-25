@@ -42,85 +42,64 @@
                 {{--End Dashboard Admin--}}
 
                 {{--Laporan--}}
-                <li class="nav-item menu-open">
-                    <a href="{{ url('admin/laporan') }}"
-                       class="nav-link {{
-                                Request::is('admin/laporan/*') ? 'active' : '' ||
-                                Request::is('admin/laporan') ? 'active' : ''
-                                }}">
-                        <i class="nav-icon fa fa-sticky-note"></i>
-                        <p>
-                            Laporan
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>1. Finance</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>2. Pattern People</p>
-                            </a>
-                        </li>
-                    </ul>
+
+                <li class="nav-header">
+                    LAPORAN
                 </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-sticky-note"></i>
+                        <p>1. Laporan Finance</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-sticky-note"></i>
+                        <p>2. Laporan Pattern People</p>
+                    </a>
+                </li>
+
+
                 {{--end laporan--}}
 
 
                 {{--big data--}}
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link disabled">
+                <li class="nav-header">
+                    BISNIS BIG DATA
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
-                        <p>
-                            Big Data Bisnis
-                            {{--<i class="right fa fa-angle-left"></i>--}}
-                        </p>
+                        <p>1. Business Strategy</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>1. Business Strategy</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>2. Market Share</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>2. Market Share</p>
+                    </a>
                 </li>
                 {{--end big data--}}
 
 
                 {{--big data--}}
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-header">
+                    PENGATURAN TIKET
+                </li>
+
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-ticket"></i>
-                        <p>
-                            Pengaturan Tiket
-                            {{--<i class="right fa fa-angle-left"></i>--}}
-                        </p>
+                        <p>1. Ticket</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>1. Ticket</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>2. Jumlah Cetak</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-ticket"></i>
+                        <p>2. Jumlah Cetak</p>
+                    </a>
                 </li>
                 {{--end big data--}}
 

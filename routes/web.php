@@ -32,7 +32,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::get('laporan',  function () {
-        return view('admin.dashboard');
+        return view('admin.laporan');
     });
 
 });
