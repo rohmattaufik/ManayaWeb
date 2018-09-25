@@ -35,6 +35,14 @@ Route::prefix('admin')->group(function () {
         return view('admin.laporan');
     });
 
+    Route::get('bisnis',  function () {
+        return view('admin.bisnis');
+    });
+
+    Route::get('pengaturan-tiket',  function () {
+        return view('admin.pengaturan-tiket');
+    });
+
 });
 
 // wisatawan

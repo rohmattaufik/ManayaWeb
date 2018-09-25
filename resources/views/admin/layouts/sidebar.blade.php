@@ -42,25 +42,30 @@
                 {{--End Dashboard Admin--}}
 
                 {{--Laporan--}}
-
                 <li class="nav-header">
                     LAPORAN
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/laporan') }}"
+                       class="nav-link {{
+                                Request::is('admin/laporan/*') ? 'active' : '' ||
+                                Request::is('admin/laporan') ? 'active' : ''
+                                }}">
                         <i class="nav-icon fa fa-sticky-note"></i>
                         <p>1. Laporan Finance</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/laporan') }}"
+                       class="nav-link {{
+                                Request::is('admin/laporan/*') ? 'active' : '' ||
+                                Request::is('admin/laporan') ? 'active' : ''
+                                }}">
                         <i class="nav-icon fa fa-sticky-note"></i>
                         <p>2. Laporan Pattern People</p>
                     </a>
                 </li>
-
-
                 {{--end laporan--}}
 
 
@@ -70,13 +75,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/bisnis') }}"
+                       class="nav-link {{
+                                Request::is('admin/bisnis/*') ? 'active' : '' ||
+                                Request::is('admin/bisnis') ? 'active' : ''
+                                }}">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>1. Business Strategy</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/bisnis') }}"
+                       class="nav-link {{
+                                Request::is('admin/bisnis/*') ? 'active' : '' ||
+                                Request::is('admin/bisnis') ? 'active' : ''
+                                }}">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>2. Market Share</p>
                     </a>
@@ -90,13 +103,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/pengaturan-tiket') }}"
+                       class="nav-link {{
+                                Request::is('admin/pengaturan-tiket/*') ? 'active' : '' ||
+                                Request::is('admin/pengaturan-tiket') ? 'active' : ''
+                                }}">
                         <i class="nav-icon fa fa-ticket"></i>
                         <p>1. Ticket</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/pengaturan-tiket') }}"
+                       class="nav-link {{
+                                Request::is('admin/pengaturan-tiket/*') ? 'active' : '' ||
+                                Request::is('admin/pengaturan-tiket') ? 'active' : ''
+                                }}">
                         <i class="nav-icon fa fa-ticket"></i>
                         <p>2. Jumlah Cetak</p>
                     </a>
