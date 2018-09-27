@@ -67,22 +67,67 @@
                                         <td>1</td>
                                         <td>Wisnus Laki-laki</td>
                                         <td>
-                                            <h3>
+                                            <h4>
                                                 <span class="badge badge-danger">
                                                     Rp. 201.728
                                                 </span>
-                                            </h3>
+                                            </h4>
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td>Wisnus Perempuan</td>
                                         <td>
-                                            <h3>
+                                            <h4>
                                                 <span class="badge badge-danger">
                                                     Rp. 201.728
                                                 </span>
-                                            </h3>
+                                            </h4>
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    Tambah Produk
+                                                    <i class="fa fa-plus-circle"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
 
@@ -130,58 +175,134 @@
                                         #
                                     </th>
                                     <th scope="col">
-                                        Buzzer
+                                        Operator
+                                    </th>
+                                    <th scope="col">
+                                        Action
                                     </th>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td>1</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jateng
-                                                </span>
-                                            </h3>
+                                            List Operator Terdaftar
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jabar
-                                                </span>
-                                            </h3>
+                                            List Operator Terdaftar
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jatim
-                                                </span>
-                                            </h3>
+                                            List Operator Terdaftar
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jogja
-                                                </span>
-                                            </h3>
+                                            List Operator Terdaftar
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>5</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Banten
-                                                </span>
-                                            </h3>
+                                            List Operator Terdaftar
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    Tambah Produk
+                                                    <i class="fa fa-plus-circle"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
 
@@ -206,7 +327,7 @@
 
                 <div class="col-lg-4">
 
-                    {{--per kategori--}}
+                    {{--pengaturan diskon--}}
                     <div class="card card-primary card-outline">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Pengaturan Diskon</h3>
@@ -229,58 +350,134 @@
                                         #
                                     </th>
                                     <th scope="col">
-                                        Buzzer
+                                        Operator
+                                    </th>
+                                    <th scope="col">
+                                        Action
                                     </th>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td>1</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jateng
-                                                </span>
-                                            </h3>
+                                            List Operator Diskon
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jabar
-                                                </span>
-                                            </h3>
+                                            List Operator Diskon
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jatim
-                                                </span>
-                                            </h3>
+                                            List Operator Diskon
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jogja
-                                                </span>
-                                            </h3>
+                                            List Operator Diskon
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>5</td>
                                         <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Banten
-                                                </span>
-                                            </h3>
+                                            List Operator Diskon
+                                        </td>
+                                        <td>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    <i class="fa fa-edit"></i>
+
+                                                </button>
+                                                <button type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                        onclick="window.location='admin/edit-tiket'">
+                                                    Tambah Produk
+                                                    <i class="fa fa-plus-circle"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
 
@@ -296,7 +493,7 @@
                     {{--</div>--}}
                     <!-- /.card-footer -->
                     </div>
-                    {{--end per kategori--}}
+                    {{--end per diskon--}}
 
 
 
@@ -307,160 +504,7 @@
             </div>
             {{--end row 1--}}
 
-            {{--start row 2--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-12">--}}
-            {{--<div class="card card-primary card-outline">--}}
-            {{--<div class="card-footer" style="display: block;">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-sm-3 col-6">--}}
-            {{--<div class="description-block border-right">--}}
 
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-1">--}}
-            {{--<span class="description-percentage" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--<h1 class="description-header text-right">--}}
-            {{--<i class="fa fa-money text-right"></i>--}}
-            {{--</h1>--}}
-            {{--<span class="description-text" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-lg-11">--}}
-            {{--<span class="description-percentage text-success">--}}
-            {{--<i class="fa fa-caret-up"></i> 17%--}}
-            {{--</span>--}}
-
-            {{--<h5 class="description-header">--}}
-            {{--Rp. 12.902.000--}}
-            {{--</h5>--}}
-
-            {{--<span class="description-text">--}}
-            {{--Total Uang--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--</div>--}}
-
-            {{--</div>--}}
-            {{--<!-- /.description-block -->--}}
-            {{--</div>--}}
-            {{--<!-- /.col -->--}}
-            {{--<div class="col-sm-3 col-6">--}}
-            {{--<div class="description-block border-right">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-1">--}}
-            {{--<span class="description-percentage" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--<h1 class="description-header text-right">--}}
-            {{--<i class="fa fa-user-circle text-right"></i>--}}
-            {{--</h1>--}}
-            {{--<span class="description-text" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-lg-11">--}}
-            {{--<span class="description-percentage text-warning">--}}
-            {{--<i class="fa fa-caret-left"></i> 0%--}}
-            {{--</span>--}}
-
-            {{--<h5 class="description-header">--}}
-            {{--Rp. 4.002.000--}}
-            {{--</h5>--}}
-
-            {{--<span class="description-text">--}}
-            {{--Total Uang dari <br/>--}}
-            {{--Solo Traveler--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<!-- /.description-block -->--}}
-            {{--</div>--}}
-            {{--<!-- /.col -->--}}
-            {{--<div class="col-sm-3 col-6">--}}
-            {{--<div class="description-block border-right">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-1">--}}
-            {{--<span class="description-percentage" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--<h1 class="description-header text-right">--}}
-            {{--<i class="fa fa-group text-right"></i>--}}
-            {{--</h1>--}}
-            {{--<span class="description-text" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-lg-11">--}}
-            {{--<span class="description-percentage text-success">--}}
-            {{--<i class="fa fa-caret-up"></i> 20%--}}
-            {{--</span>--}}
-
-            {{--<h5 class="description-header">--}}
-            {{--Rp. 7.508.000--}}
-            {{--</h5>--}}
-
-            {{--<span class="description-text">--}}
-            {{--Total Uang <br/>--}}
-            {{--dari Grup--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<!-- /.description-block -->--}}
-            {{--</div>--}}
-            {{--<!-- /.col -->--}}
-            {{--<div class="col-sm-3 col-6">--}}
-            {{--<div class="description-block">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-1">--}}
-            {{--<span class="description-percentage" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--<h1 class="description-header text-right">--}}
-            {{--<i class="fa fa-shopping-cart text-right"></i>--}}
-            {{--</h1>--}}
-            {{--<span class="description-text" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-lg-11">--}}
-            {{--<span class="description-percentage text-danger">--}}
-            {{--<i class="fa fa-caret-down"></i> 18%--}}
-            {{--</span>--}}
-
-            {{--<h5 class="description-header">--}}
-            {{--Rp. 3.508.000--}}
-            {{--</h5>--}}
-
-            {{--<span class="description-text">--}}
-            {{--Jumlah Biaya <br/>--}}
-            {{--Marketing--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--</div>--}}
-
-            {{--</div>--}}
-            {{--<!-- /.description-block -->--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<!-- /.row -->--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--end row 2--}}
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
