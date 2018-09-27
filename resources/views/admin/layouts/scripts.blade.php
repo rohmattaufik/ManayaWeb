@@ -6,8 +6,8 @@
 <script src="{{ URL::asset('adminlte/plugins/fastclick/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ URL::asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ URL::asset('adminlte/dist/js/demo.js') }}"></script>
+{{--<!-- AdminLTE for demo purposes -->--}}
+{{--<script src="{{ URL::asset('adminlte/dist/js/demo.js') }}"></script>--}}
 <!-- FLOT CHARTS -->
 <script src="{{ URL::asset('adminlte/plugins/flot/jquery.flot.min.js') }}"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->

@@ -1,6 +1,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Manaya | Admin</title>
+
+@if(Session::get('superadmin'))
+    <title>Manaya | Super Admin</title>
+@else
+    <title>Manaya | Admin</title>
+@endif
+
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 

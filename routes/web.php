@@ -25,6 +25,14 @@ Route::get('/', function () {
     return view('admin.login');
 });
 
+Route::prefix('super-admin')->group(function () {
+
+    Route::get('dashboard',  function () {
+        return view('admin.super-dashboard');
+    });
+
+});
+
 Route::prefix('admin')->group(function () {
 
     Route::get('dashboard',  function () {

@@ -25,6 +25,24 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
+                {{--Dashboard Super Admin--}}
+                @if(Request::is('super-admin/dashboard') || Session::get('superadmin'))
+                <li class="nav-item">
+                    <a href="{{ url('super-admin/dashboard') }}"
+                       class="nav-link {{
+                                Request::is('super-admin/dashboard/*') ? 'active' : '' ||
+                                Request::is('super-admin/dashboard') ? 'active' : ''
+                                }}">
+                        <i class="nav-icon fa fa-area-chart"></i>
+                        <p>
+                            Dashboard Super Admin
+                        </p>
+                    </a>
+                </li>
+                    @else
+
+                {{--End Dashboard Super Admin--}}
+
                 {{--Dashboard Admin--}}
                 <li class="nav-item">
                     <a href="{{ url('admin/dashboard') }}"
@@ -40,6 +58,8 @@
                     </a>
                 </li>
                 {{--End Dashboard Admin--}}
+
+
 
                 {{--Laporan--}}
                 <li class="nav-header">
@@ -123,7 +143,7 @@
                     </a>
                 </li>
                 {{--end big data--}}
-
+                @endif
 
                 {{--<li class="nav-item">--}}
                     {{--<a href="#" class="nav-link">--}}
