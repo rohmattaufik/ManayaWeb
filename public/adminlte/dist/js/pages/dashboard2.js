@@ -99,37 +99,37 @@ $(function () {
       value    : 700,
       color    : '#dc3545',
       highlight: '#dc3545',
-      label    : 'Chrome'
+      label    : 'Jateng'
     },
     {
       value    : 500,
       color    : '#28a745',
       highlight: '#28a745',
-      label    : 'IE'
+      label    : 'Jabar'
     },
     {
       value    : 400,
       color    : '#ffc107',
       highlight: '#ffc107',
-      label    : 'FireFox'
+      label    : 'Jatim'
     },
     {
       value    : 600,
       color    : '#17a2b8',
       highlight: '#17a2b8',
-      label    : 'Safari'
+      label    : 'Kep. Seribu'
     },
     {
       value    : 300,
       color    : '#007bff',
       highlight: '#007bff',
-      label    : 'Opera'
+      label    : 'Banten'
     },
     {
       value    : 100,
       color    : '#6c757d',
       highlight: '#6c757d',
-      label    : 'Navigator'
+      label    : 'Jogja'
     }
   ]
   var pieOptions     = {

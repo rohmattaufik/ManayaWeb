@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-bar-chart"></i>
+                        <i class="fa fa-ticket"></i>
                         Pengaturan Tiket
                     </h1>
                 </div><!-- /.col -->
@@ -27,44 +27,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
-                    {{--Waktu--}}
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">Waktu</h3>
-                        </div>
-                        <div class="card-body table-responsive pad text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info">Today So Far</button>
-                                <button type="button" class="btn btn-success">Minggu Ini</button>
-                                <button type="button" class="btn btn-danger">Bulan Ini</button>
-                            </div>
-                        </div>
-                    </div>
-                    {{--end waktu--}}
 
-                    {{--total tiket terjual--}}
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>
-                                <sup style="font-size: 20px">
-                                    <i class="fa fa-arrow-up"></i>
-                                </sup>
-                                2453
-                            </h3>
-
-                            <p>Total Tiket Terjual</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                    {{--end totaltiket terjual--}}
-
-                    {{--per kategori--}}
+                    {{--Pengaturan Tiket--}}
                     <div class="card card-primary card-outline">
                         <div class="card-header border-transparent">
-                            <h3 class="card-title">Per Kategori</h3>
+                            <h3 class="card-title">Pengaturan Tiket</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
@@ -79,43 +46,41 @@
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table m-0">
+                                    <thead>
+
+                                    <th scope="col">
+                                        #
+                                    </th>
+                                    <th scope="col">
+                                        Tiket
+                                    </th>
+                                    <th scope="col">
+                                        Harga
+                                    </th>
+                                    <th scope="col">
+                                        Action
+                                    </th>
+
+                                    </thead>
                                     <tbody>
                                     <tr>
-                                        <td>Wisnus Laki-laki: </td>
+                                        <td>1</td>
+                                        <td>Wisnus Laki-laki</td>
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
-                                                    1320
+                                                    Rp. 201.728
                                                 </span>
                                             </h3>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Wisnus Perempuan: </td>
+                                        <td>2</td>
+                                        <td>Wisnus Perempuan</td>
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
-                                                    370
-                                                </span>
-                                            </h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Wisman Laki-laki: </td>
-                                        <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    465
-                                                </span>
-                                            </h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Wisman Perempuan: </td>
-                                        <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    78
+                                                    Rp. 201.728
                                                 </span>
                                             </h3>
                                         </td>
@@ -135,217 +100,366 @@
                     </div>
                     {{--end per kategori--}}
 
+
                 </div>
                 {{-- end tiket terjual --}}
 
 
-                <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fa fa-bar-chart-o"></i>
-                                Pengunjung Saat Ini
-                            </h3>
+                <div class="col-lg-4">
+
+                    {{--per kategori--}}
+                    <div class="card card-primary card-outline">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">Pengaturan Operator</h3>
 
                             <div class="card-tools">
-                                Real time
-                                <div class="btn-group" id="realtime" data-toggle="btn-toggle">
-                                    <button type="button" class="btn btn-default btn-sm active" data-toggle="on">On</button>
-                                    <button type="button" class="btn btn-default btn-sm" data-toggle="off">Off</button>
-                                </div>
+                                <button type="button" class="btn btn-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                {{--<button type="button" class="btn btn-tool" data-widget="remove">--}}
+                                {{--<i class="fa fa-times"></i>--}}
+                                {{--</button>--}}
                             </div>
                         </div>
-                        <div class="card-body">
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <th scope="col">
+                                        #
+                                    </th>
+                                    <th scope="col">
+                                        Buzzer
+                                    </th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Jateng
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Jabar
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Jatim
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Jogja
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Banten
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
 
-                            <div id="interactive" style="height: 300px; padding: 0px; position: relative;"><canvas class="flot-base" width="1501" height="375" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1201.4px; height: 300px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 23px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 137px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 255px; text-align: center;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 373px; text-align: center;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 491px; text-align: center;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 609px; text-align: center;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 727px; text-align: center;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 845px; text-align: center;">70</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 963px; text-align: center;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 1081px; text-align: center;">90</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 264px; left: 14px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 212px; left: 8px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 159px; left: 8px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 106px; left: 8px; text-align: right;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 53px; left: 8px; text-align: right;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">100</div></div></div><canvas class="flot-overlay" width="1501" height="375" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1201.4px; height: 300px;"></canvas></div>
-                        </div>
-
-                    </div>
-
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fa fa-bar-chart-o"></i>
-                                Pengunjung Saat Ini
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="col-md-12">
-                                <p class="text-center">
-                                    {{--<strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>--}}
-                                </p>
-
-                                <div class="chart">
-                                    <!-- Sales Chart Canvas -->
-                                    <canvas id="salesChart" height="232" style="height: 186px; width: 796px;" width="995"></canvas>
-                                </div>
-                                <!-- /.chart-responsive -->
+                                    </tbody>
+                                </table>
                             </div>
-
-                            {{--<h6 class="card-title">Special title treatment</h6>--}}
-
-                            {{--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--}}
-                            {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
+                            <!-- /.table-responsive -->
                         </div>
+                        <!-- /.card-body -->
+                    {{--<div class="card-footer clearfix">--}}
+                    {{--<a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>--}}
+                    {{--<a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>--}}
+                    {{--</div>--}}
+                    <!-- /.card-footer -->
                     </div>
+                    {{--end per kategori--}}
+
+
+
                 </div>
-                <!-- /.col-md-6 -->
+                <!-- /.col-lg-4 -->
+
+                <div class="col-lg-4">
+
+                    {{--per kategori--}}
+                    <div class="card card-primary card-outline">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">Pengaturan Diskon</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                {{--<button type="button" class="btn btn-tool" data-widget="remove">--}}
+                                {{--<i class="fa fa-times"></i>--}}
+                                {{--</button>--}}
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <th scope="col">
+                                        #
+                                    </th>
+                                    <th scope="col">
+                                        Buzzer
+                                    </th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Jateng
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Jabar
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Jatim
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Jogja
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>
+                                            <h3>
+                                                <span class="badge badge-danger">
+                                                    Banten
+                                                </span>
+                                            </h3>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.card-body -->
+                    {{--<div class="card-footer clearfix">--}}
+                    {{--<a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>--}}
+                    {{--<a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>--}}
+                    {{--</div>--}}
+                    <!-- /.card-footer -->
+                    </div>
+                    {{--end per kategori--}}
+
+
+
+                </div>
+                <!-- /.col-lg-4 -->
+
+
             </div>
             {{--end row 1--}}
 
             {{--start row 2--}}
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card card-primary card-outline">
-                        <div class="card-footer" style="display: block;">
-                            <div class="row">
-                                <div class="col-sm-3 col-6">
-                                    <div class="description-block border-right">
+            {{--<div class="row">--}}
+            {{--<div class="col-lg-12">--}}
+            {{--<div class="card card-primary card-outline">--}}
+            {{--<div class="card-footer" style="display: block;">--}}
+            {{--<div class="row">--}}
+            {{--<div class="col-sm-3 col-6">--}}
+            {{--<div class="description-block border-right">--}}
 
-                                        <div class="row">
-                                            <div class="col-lg-1">
-                                                <span class="description-percentage" style="color: white;">
-                                                    .
-                                                </span>
-                                                <h1 class="description-header text-right">
-                                                    <i class="fa fa-money text-right"></i>
-                                                </h1>
-                                                <span class="description-text" style="color: white;">
-                                                    .
-                                                </span>
-                                            </div>
+            {{--<div class="row">--}}
+            {{--<div class="col-lg-1">--}}
+            {{--<span class="description-percentage" style="color: white;">--}}
+            {{--.--}}
+            {{--</span>--}}
+            {{--<h1 class="description-header text-right">--}}
+            {{--<i class="fa fa-money text-right"></i>--}}
+            {{--</h1>--}}
+            {{--<span class="description-text" style="color: white;">--}}
+            {{--.--}}
+            {{--</span>--}}
+            {{--</div>--}}
 
-                                            <div class="col-lg-11">
-                                                <span class="description-percentage text-success">
-                                                    <i class="fa fa-caret-up"></i> 17%
-                                                </span>
+            {{--<div class="col-lg-11">--}}
+            {{--<span class="description-percentage text-success">--}}
+            {{--<i class="fa fa-caret-up"></i> 17%--}}
+            {{--</span>--}}
 
-                                                <h5 class="description-header">
-                                                    Rp. 12.902.000
-                                                </h5>
+            {{--<h5 class="description-header">--}}
+            {{--Rp. 12.902.000--}}
+            {{--</h5>--}}
 
-                                                <span class="description-text">
-                                                    Total Uang
-                                                </span>
-                                            </div>
+            {{--<span class="description-text">--}}
+            {{--Total Uang--}}
+            {{--</span>--}}
+            {{--</div>--}}
 
-                                        </div>
+            {{--</div>--}}
 
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-3 col-6">
-                                    <div class="description-block border-right">
-                                        <div class="row">
-                                            <div class="col-lg-1">
-                                                <span class="description-percentage" style="color: white;">
-                                                    .
-                                                </span>
-                                                <h1 class="description-header text-right">
-                                                    <i class="fa fa-user-circle text-right"></i>
-                                                </h1>
-                                                <span class="description-text" style="color: white;">
-                                                    .
-                                                </span>
-                                            </div>
+            {{--</div>--}}
+            {{--<!-- /.description-block -->--}}
+            {{--</div>--}}
+            {{--<!-- /.col -->--}}
+            {{--<div class="col-sm-3 col-6">--}}
+            {{--<div class="description-block border-right">--}}
+            {{--<div class="row">--}}
+            {{--<div class="col-lg-1">--}}
+            {{--<span class="description-percentage" style="color: white;">--}}
+            {{--.--}}
+            {{--</span>--}}
+            {{--<h1 class="description-header text-right">--}}
+            {{--<i class="fa fa-user-circle text-right"></i>--}}
+            {{--</h1>--}}
+            {{--<span class="description-text" style="color: white;">--}}
+            {{--.--}}
+            {{--</span>--}}
+            {{--</div>--}}
 
-                                            <div class="col-lg-11">
-                                                <span class="description-percentage text-warning">
-                                                    <i class="fa fa-caret-left"></i> 0%
-                                                </span>
+            {{--<div class="col-lg-11">--}}
+            {{--<span class="description-percentage text-warning">--}}
+            {{--<i class="fa fa-caret-left"></i> 0%--}}
+            {{--</span>--}}
 
-                                                <h5 class="description-header">
-                                                    Rp. 4.002.000
-                                                </h5>
+            {{--<h5 class="description-header">--}}
+            {{--Rp. 4.002.000--}}
+            {{--</h5>--}}
 
-                                                <span class="description-text">
-                                                    Total Uang dari <br/>
-                                                    Solo Traveler
-                                                </span>
-                                            </div>
+            {{--<span class="description-text">--}}
+            {{--Total Uang dari <br/>--}}
+            {{--Solo Traveler--}}
+            {{--</span>--}}
+            {{--</div>--}}
 
-                                        </div>
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-3 col-6">
-                                    <div class="description-block border-right">
-                                        <div class="row">
-                                            <div class="col-lg-1">
-                                                <span class="description-percentage" style="color: white;">
-                                                    .
-                                                </span>
-                                                <h1 class="description-header text-right">
-                                                    <i class="fa fa-group text-right"></i>
-                                                </h1>
-                                                <span class="description-text" style="color: white;">
-                                                    .
-                                                </span>
-                                            </div>
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--<!-- /.description-block -->--}}
+            {{--</div>--}}
+            {{--<!-- /.col -->--}}
+            {{--<div class="col-sm-3 col-6">--}}
+            {{--<div class="description-block border-right">--}}
+            {{--<div class="row">--}}
+            {{--<div class="col-lg-1">--}}
+            {{--<span class="description-percentage" style="color: white;">--}}
+            {{--.--}}
+            {{--</span>--}}
+            {{--<h1 class="description-header text-right">--}}
+            {{--<i class="fa fa-group text-right"></i>--}}
+            {{--</h1>--}}
+            {{--<span class="description-text" style="color: white;">--}}
+            {{--.--}}
+            {{--</span>--}}
+            {{--</div>--}}
 
-                                            <div class="col-lg-11">
-                                                <span class="description-percentage text-success">
-                                                    <i class="fa fa-caret-up"></i> 20%
-                                                </span>
+            {{--<div class="col-lg-11">--}}
+            {{--<span class="description-percentage text-success">--}}
+            {{--<i class="fa fa-caret-up"></i> 20%--}}
+            {{--</span>--}}
 
-                                                <h5 class="description-header">
-                                                    Rp. 7.508.000
-                                                </h5>
+            {{--<h5 class="description-header">--}}
+            {{--Rp. 7.508.000--}}
+            {{--</h5>--}}
 
-                                                <span class="description-text">
-                                                    Total Uang <br/>
-                                                    dari Grup
-                                                </span>
-                                            </div>
+            {{--<span class="description-text">--}}
+            {{--Total Uang <br/>--}}
+            {{--dari Grup--}}
+            {{--</span>--}}
+            {{--</div>--}}
 
-                                        </div>
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-3 col-6">
-                                    <div class="description-block">
-                                        <div class="row">
-                                            <div class="col-lg-1">
-                                                <span class="description-percentage" style="color: white;">
-                                                    .
-                                                </span>
-                                                <h1 class="description-header text-right">
-                                                    <i class="fa fa-shopping-cart text-right"></i>
-                                                </h1>
-                                                <span class="description-text" style="color: white;">
-                                                    .
-                                                </span>
-                                            </div>
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--<!-- /.description-block -->--}}
+            {{--</div>--}}
+            {{--<!-- /.col -->--}}
+            {{--<div class="col-sm-3 col-6">--}}
+            {{--<div class="description-block">--}}
+            {{--<div class="row">--}}
+            {{--<div class="col-lg-1">--}}
+            {{--<span class="description-percentage" style="color: white;">--}}
+            {{--.--}}
+            {{--</span>--}}
+            {{--<h1 class="description-header text-right">--}}
+            {{--<i class="fa fa-shopping-cart text-right"></i>--}}
+            {{--</h1>--}}
+            {{--<span class="description-text" style="color: white;">--}}
+            {{--.--}}
+            {{--</span>--}}
+            {{--</div>--}}
 
-                                            <div class="col-lg-11">
-                                                <span class="description-percentage text-danger">
-                                                    <i class="fa fa-caret-down"></i> 18%
-                                                </span>
+            {{--<div class="col-lg-11">--}}
+            {{--<span class="description-percentage text-danger">--}}
+            {{--<i class="fa fa-caret-down"></i> 18%--}}
+            {{--</span>--}}
 
-                                                <h5 class="description-header">
-                                                    Rp. 3.508.000
-                                                </h5>
+            {{--<h5 class="description-header">--}}
+            {{--Rp. 3.508.000--}}
+            {{--</h5>--}}
 
-                                                <span class="description-text">
-                                                    Jumlah Biaya <br/>
-                                                    Marketing
-                                                </span>
-                                            </div>
+            {{--<span class="description-text">--}}
+            {{--Jumlah Biaya <br/>--}}
+            {{--Marketing--}}
+            {{--</span>--}}
+            {{--</div>--}}
 
-                                        </div>
+            {{--</div>--}}
 
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{--</div>--}}
+            {{--<!-- /.description-block -->--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--<!-- /.row -->--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
             {{--end row 2--}}
         </div><!-- /.container-fluid -->
     </div>
@@ -659,6 +773,73 @@
     {{--saleschart--}}
     <script src="{{ URL::asset('adminlte/dist/js/pages/dashboard2.js') }}">
 
+    </script>
+
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+            //Money Euro
+            $('[data-mask]').inputmask()
+
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+                timePicker         : true,
+                timePickerIncrement: 30,
+                format             : 'MM/DD/YYYY h:mm A'
+            })
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+                {
+                    ranges   : {
+                        'Today'       : [moment(), moment()],
+                        'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate  : moment()
+                },
+                function (start, end) {
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+                }
+            )
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass   : 'iradio_minimal-blue'
+            })
+            //Red color scheme for iCheck
+            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass   : 'iradio_minimal-red'
+            })
+            //Flat red color scheme for iCheck
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass   : 'iradio_flat-green'
+            })
+
+            //Colorpicker
+            $('.my-colorpicker1').colorpicker()
+            //color picker with addon
+            $('.my-colorpicker2').colorpicker()
+
+            //Timepicker
+            $('.timepicker').timepicker({
+                showInputs: false
+            })
+        })
     </script>
 
 @endsection

@@ -27,3 +27,5 @@
         })
     })
 </script>
+<!-- Select2 -->
+<script src="{{ URL::asset('adminlte/plugins/select2/select2.full.min.js') }}"></script>
