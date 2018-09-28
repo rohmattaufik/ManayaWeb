@@ -38,13 +38,13 @@ class LaporanController extends Controller
               'omset'                 =>$pendapatanSolo + $pendapatanGroup,
 
       );
-      dd($Laporan);
+    //   dd($Laporan);
 
       if($Laporan == null)
       {
           return view();
       }
-          return view('test')->with("Laporan", $Laporan);
+          return view('admin.laporan')->with("Laporan", $Laporan);
   }
 
 }

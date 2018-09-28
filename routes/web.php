@@ -35,9 +35,7 @@ Route::prefix('super-admin')->group(function () {
 
 Route::prefix('admin')->group(function () {
 
-    Route::get('dashboard',  function () {
-        return view('admin.dashboard');
-    });
+    Route::get('dashboard',  'DashboardController@index')->name('admin-dashboard');
 
     Route::get('laporan',  function () {
         return view('admin.laporan');

@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<input type="hidden" id="data_grafik" name="grafik" value="{{ json_encode($Laporan['topProvinsi'])}}">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -65,12 +66,11 @@
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <ul class="chart-legend clearfix">
-                                            <li><i class="fa fa-circle-o text-danger"></i> Jateng</li>
-                                            <li><i class="fa fa-circle-o text-success"></i> Jabar</li>
-                                            <li><i class="fa fa-circle-o text-warning"></i> Jatim</li>
-                                            <li><i class="fa fa-circle-o text-info"></i> Kep. Seribu</li>
-                                            <li><i class="fa fa-circle-o text-primary"></i> Banten</li>
-                                            <li><i class="fa fa-circle-o text-secondary"></i> Jogja</li>
+                                            <li><i class="fa fa-circle-o text-danger"></i> {{$Laporan['topProvinsi'][0]['asal_provinsi']}}</li>
+                                            <li><i class="fa fa-circle-o text-success"></i> {{$Laporan['topProvinsi'][1]['asal_provinsi']}}</li>
+                                            <li><i class="fa fa-circle-o text-warning"></i> {{$Laporan['topProvinsi'][2]['asal_provinsi']}}</li>
+                                            <li><i class="fa fa-circle-o text-info"></i>  {{$Laporan['topProvinsi'][3]['asal_provinsi']}}</li>
+                                            <li><i class="fa fa-circle-o text-primary"></i>  {{$Laporan['topProvinsi'][4]['asal_provinsi']}}</li>
                                         </ul>
                                     </div>
                                     <!-- /.col -->
@@ -841,6 +841,83 @@
                 showInputs: false
             })
         })
+    </script>
+    <script>
+    $(function () {
+
+        'use strict'
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var data_grafik = $.parseJSON($('#data_grafik').val());
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieChart       = new Chart(pieChartCanvas)
+        var PieData        = [
+            {
+            value    : data_grafik[0]['totals'],
+            color    : '#dc3545',
+            highlight: '#dc3545',
+            label    : data_grafik[0]['asal_provinsi']
+            },
+            {
+            value    : data_grafik[1]['totals'],
+            color    : '#28a745',
+            highlight: '#28a745',
+            label    : data_grafik[1]['asal_provinsi']
+            },
+            {
+            value    : data_grafik[2]['totals'],
+            color    : '#ffc107',
+            highlight: '#ffc107',
+            label    : data_grafik[2]['asal_provinsi']
+            },
+            {
+            value    : data_grafik[3]['totals'],
+            color    : '#17a2b8',
+            highlight: '#17a2b8',
+            label    : data_grafik[3]['asal_provinsi']
+            },
+            {
+            value    : data_grafik[4]['totals'],
+            color    : '#007bff',
+            highlight: '#007bff',
+            label    : data_grafik[4]['asal_provinsi']
+            }
+        ]
+        var pieOptions     = {
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke    : true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor   : '#fff',
+            //Number - The width of each segment stroke
+            segmentStrokeWidth   : 1,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 50, // This is 0 for Pie charts
+            //Number - Amount of animation steps
+            animationSteps       : 100,
+            //String - Animation easing effect
+            animationEasing      : 'easeOutBounce',
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate        : true,
+            //Boolean - Whether we animate scaling the Doughnut from the centre
+            animateScale         : false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive           : true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio  : false,
+            //String - A legend template
+            legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
+            //String - A tooltip template
+            tooltipTemplate      : '<%=value %> <%=label%> users'
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart.Doughnut(PieData, pieOptions)
+        //-----------------
+        //- END PIE CHART -
+        //-----------------
+    })
     </script>
 
 @endsection
