@@ -53,6 +53,8 @@ Route::prefix('admin')->group(function () {
 
 });
 
+Route::get('test-index', 'DashboardController@index');
+
 // wisatawan
 Route::get('wisatawan','WisatawanController@index');
 Route::post('/wisatawan/store','WisatawanController@store');
@@ -61,3 +63,5 @@ Route::post('/wisatawan/{id}/update','WisatawanController@update');
 //UserAdmin
 //Route::get('test','DashboardController@index');
 Route::get('test','LaporanController@index');
+
+Auth::routes();

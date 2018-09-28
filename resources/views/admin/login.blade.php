@@ -25,15 +25,15 @@
                         <p style="color: red;" class="login-box-msg">{{ Session::get('gagal') }}</p>
                     @endif
 
-                    <form action="{{ url(action(('UserController@checkLoginRole'))) }}" method="post">
+                    <form action="{{ route('login') }}" method="post">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="username" placeholder="Username">
+                            <input type="text" class="form-control" name="email" placeholder="Username">
                             <div class="input-group-append">
                                 <span class="fa fa-envelope input-group-text"></span>
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" class="form-control" placeholder="Password">
                             <div class="input-group-append">
                                 <span class="fa fa-lock input-group-text"></span>
                             </div>

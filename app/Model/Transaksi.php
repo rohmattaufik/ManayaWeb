@@ -16,7 +16,12 @@ class Transaksi extends Model
       'asal_kabupaten',
       'asal_kecamatan',
       'total_harga',
-      'is_lunas'
+      'is_lunas',
+      'total_diskon',
+      'harga_akhir',
+      'jumlah_bayar',
+      'email_wisatawan',
+      'wisata_id'
     ];
 
     public function KategoriWisatawans()

@@ -17,19 +17,19 @@ class LaporanController extends Controller
   public function index()
   {
       $topProvinsi               = TransaksiDetail::with('Transaksis')
-                                  ->select("Transaksis.asal_provinsi",DB::raw('SUM(Transaksi_Details.jumlah_wisatawan) as totals' ))
-                                  ->join('Transaksis', 'Transaksis.id', '=' ,'Transaksi_Details.transaksi_id')
-                                  ->whereUser_id('1')->GroupBy('Transaksis.asal_provinsi')->Orderby(DB::raw('SUM(Transaksi_Details.jumlah_wisatawan)'),'desc')->take(5)->get()->toArray();
+                                  ->select("transaksis.asal_provinsi",DB::raw('SUM(transaksi_details.jumlah_wisatawan) as totals' ))
+                                  ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
+                                  ->whereUser_id('1')->GroupBy('transaksis.asal_provinsi')->Orderby(DB::raw('SUM(transaksi_details.jumlah_wisatawan)'),'desc')->take(5)->get()->toArray();
       $tiketPerHari              =TransaksiDetail::with('Transaksis')
-                                  ->select(DB::raw('(AVG(Transaksi_Details.jumlah_wisatawan) / count(distinct date(Transaksi_Details.created_at))) as totals' ))
-                                  ->join('Transaksis', 'Transaksis.id', '=' ,'Transaksi_Details.transaksi_id')
+                                  ->select(DB::raw('(AVG(transaksi_details.jumlah_wisatawan) / count(distinct date(transaksi_details.created_at))) as totals' ))
+                                  ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
                                   ->whereUser_id('1')->get()->toArray();
       $pendapatanSolo            = TransaksiDetail::with('Transaksis')
-                                  ->join('Transaksis', 'Transaksis.id', '=' ,'Transaksi_Details.transaksi_id')
-                                  ->whereUser_id('1')->whereKategori_wisatawan_id(1)->sum('transaksi_Details.total_harga');
+                                  ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
+                                  ->whereUser_id('1')->whereKategori_wisatawan_id(1)->sum('transaksi_details.total_harga');
       $pendapatanGroup           = TransaksiDetail::with('Transaksis')
-                                  ->join('Transaksis', 'Transaksis.id', '=' ,'Transaksi_Details.transaksi_id')
-                                  ->whereUser_id('1')->whereKategori_wisatawan_id(2)->sum('transaksi_Details.total_harga');
+                                  ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
+                                  ->whereUser_id('1')->whereKategori_wisatawan_id(2)->sum('transaksi_details.total_harga');
 
 
       $Laporan =array(

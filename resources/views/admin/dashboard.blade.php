@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
+   <input type="hidden" id="data_grafik" name="grafik" value="{{ json_encode($data_out['data_grafik']['grafikPerHari'])}}">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -49,7 +50,7 @@
                                 <sup style="font-size: 20px">
                                     <i class="fa fa-arrow-up"></i>
                                 </sup>
-                                2453
+                                {{ $data_out['data_wisatawan']['totalTiketTerjual']}}
                             </h3>
 
                             <p>Total Tiket Terjual</p>
@@ -85,7 +86,7 @@
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
-                                                    1320
+                                                {{ $data_out['data_wisatawan']['totalWisnusLaki']}}
                                                 </span>
                                             </h3>
                                         </td>
@@ -95,7 +96,7 @@
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
-                                                    370
+                                                {{ $data_out['data_wisatawan']['totalWisnusPerempuan']}}
                                                 </span>
                                             </h3>
                                         </td>
@@ -105,7 +106,7 @@
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
-                                                    465
+                                                {{ $data_out['data_wisatawan']['totalWismanLaki']}}
                                                 </span>
                                             </h3>
                                         </td>
@@ -115,7 +116,7 @@
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
-                                                    78
+                                                {{ $data_out['data_wisatawan']['totalWismanPerempuan']}}
                                                 </span>
                                             </h3>
                                         </td>
@@ -140,7 +141,7 @@
 
 
                 <div class="col-lg-8">
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="fa fa-bar-chart-o"></i>
@@ -160,7 +161,7 @@
                             <div id="interactive" style="height: 300px; padding: 0px; position: relative;"><canvas class="flot-base" width="1501" height="375" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1201.4px; height: 300px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 23px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 137px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 255px; text-align: center;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 373px; text-align: center;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 491px; text-align: center;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 609px; text-align: center;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 727px; text-align: center;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 845px; text-align: center;">70</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 963px; text-align: center;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 109px; top: 280px; left: 1081px; text-align: center;">90</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 264px; left: 14px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 212px; left: 8px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 159px; left: 8px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 106px; left: 8px; text-align: right;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 53px; left: 8px; text-align: right;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">100</div></div></div><canvas class="flot-overlay" width="1501" height="375" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1201.4px; height: 300px;"></canvas></div>
                         </div>
 
-                    </div>
+                    </div> -->
 
                     <div class="card card-primary card-outline">
                         <div class="card-header">
@@ -221,7 +222,7 @@
                                                 </span>
 
                                                 <h5 class="description-header">
-                                                    Rp. 12.902.000
+                                                    Rp. {{ $data_out['data_wisatawan']['totalUang']}}
                                                 </h5>
 
                                                 <span class="description-text">
@@ -256,7 +257,7 @@
                                                 </span>
 
                                                 <h5 class="description-header">
-                                                    Rp. 4.002.000
+                                                    Rp. {{ $data_out['data_wisatawan']['totalPendapatanSolo']}}
                                                 </h5>
 
                                                 <span class="description-text">
@@ -291,7 +292,7 @@
                                                 </span>
 
                                                 <h5 class="description-header">
-                                                    Rp. 7.508.000
+                                                    Rp. {{ $data_out['data_wisatawan']['totalPendapatanGroup']}}
                                                 </h5>
 
                                                 <span class="description-text">
@@ -326,7 +327,7 @@
                                                 </span>
 
                                                 <h5 class="description-header">
-                                                    Rp. 3.508.000
+                                                    Rp. {{ $data_out['data_wisatawan']['totalBiayaMarketing']}}
                                                 </h5>
 
                                                 <span class="description-text">
@@ -528,10 +529,13 @@
              * FULL WIDTH STATIC AREA CHART
              * -----------------
              */
+             
+             
             var areaData = [[2, 88.0], [3, 93.3], [4, 102.0], [5, 108.5], [6, 115.7], [7, 115.6],
                 [8, 124.6], [9, 130.3], [10, 134.3], [11, 141.4], [12, 146.5], [13, 151.7], [14, 159.9],
                 [15, 165.4], [16, 167.8], [17, 168.7], [18, 169.5], [19, 168.0]]
-            $.plot('#area-chart', [areaData], {
+            
+            $.plot('#area-chart', [data_area], {
                 grid  : {
                     borderWidth: 0
                 },
@@ -561,7 +565,7 @@
                 data : [['January', 10], ['February', 8], ['March', 4], ['April', 13], ['May', 17], ['June', 9]],
                 color: '#3c8dbc'
             }
-            $.plot('#bar-chart', [bar_data], {
+            $.plot('#salesChart', [data_area], {
                 grid  : {
                     borderWidth: 1,
                     borderColor: '#f3f3f3',
@@ -638,8 +642,114 @@
                 + '<br>'
                 + Math.round(series.percent) + '%</div>'
         }
+
+  
     </script>
 
+<script>
+$(function () {
+
+'use strict'
+
+/* ChartJS
+ * -------
+ * Here we will create a few charts using ChartJS
+ */
+
+//-----------------------
+//- MONTHLY SALES CHART -
+//-----------------------
+
+// Get context with jQuery - using jQuery's .get() method.
+var salesChartCanvas = $('#salesChart').get(0).getContext('2d')
+// This will get the first returned node in the jQuery collection.
+var salesChart       = new Chart(salesChartCanvas)
+var data_grafik = $.parseJSON($('#data_grafik').val());
+var data_area = [];
+var label = [];
+jQuery.each(data_grafik, function(k,v){
+    data_area[k] = JSON.parse(v.total);
+    console.log(v);
+    label[k]    = "Jam " + JSON.parse(v.HH);
+});
+console.log(data_area);
+
+var salesChartData = {
+  
+  labels  : label,
+  datasets: [
+    // {
+    //   label               : 'Electronics',
+    //   fillColor           : '#dee2e6',
+    //   strokeColor         : '#ced4da',
+    //   pointColor          : '#ced4da',
+    //   pointStrokeColor    : '#c1c7d1',
+    //   pointHighlightFill  : '#fff',
+    //   pointHighlightStroke: 'rgb(220,220,220)',
+    //   data                : [65, 59, 80, 81, 56, 55, 40]
+    // },
+    {
+      label               : 'Digital Goods',
+      fillColor           : 'rgba(0, 123, 255, 0.9)',
+      strokeColor         : 'rgba(0, 123, 255, 1)',
+      pointColor          : '#3b8bba',
+      pointStrokeColor    : 'rgba(0, 123, 255, 1)',
+      pointHighlightFill  : '#fff',
+      pointHighlightStroke: 'rgba(0, 123, 255, 1)',
+      data                : data_area
+    }
+  ]
+}
+
+var salesChartOptions = {
+  //Boolean - If we should show the scale at all
+  showScale               : true,
+  //Boolean - Whether grid lines are shown across the chart
+  scaleShowGridLines      : false,
+  //String - Colour of the grid lines
+  scaleGridLineColor      : 'rgba(0,0,0,.05)',
+  //Number - Width of the grid lines
+  scaleGridLineWidth      : 1,
+  //Boolean - Whether to show horizontal lines (except X axis)
+  scaleShowHorizontalLines: true,
+  //Boolean - Whether to show vertical lines (except Y axis)
+  scaleShowVerticalLines  : true,
+  //Boolean - Whether the line is curved between points
+  bezierCurve             : true,
+  //Number - Tension of the bezier curve between points
+  bezierCurveTension      : 0.3,
+  //Boolean - Whether to show a dot for each point
+  pointDot                : false,
+  //Number - Radius of each point dot in pixels
+  pointDotRadius          : 4,
+  //Number - Pixel width of point dot stroke
+  pointDotStrokeWidth     : 1,
+  //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+  pointHitDetectionRadius : 20,
+  //Boolean - Whether to show a stroke for datasets
+  datasetStroke           : true,
+  //Number - Pixel width of dataset stroke
+  datasetStrokeWidth      : 2,
+  //Boolean - Whether to fill the dataset with a color
+  datasetFill             : true,
+  //String - A legend template
+  legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%=datasets[i].label%></li><%}%></ul>',
+  //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+  maintainAspectRatio     : false,
+  //Boolean - whether to make the chart responsive to window resizing
+  responsive              : true
+}
+
+//Create the line chart
+salesChart.Line(salesChartData, salesChartOptions)
+
+//---------------------------
+//- END MONTHLY SALES CHART -
+//---------------------------
+
+
+})
+</script>
 
     {{--<!-- OPTIONAL SCRIPTS -->--}}
     {{--<script src="{{ URL::asset('adminlte/dist/js/demo.js') }}"></script>--}}
@@ -657,7 +767,7 @@
 
 
     {{--saleschart--}}
-    <script src="{{ URL::asset('adminlte/dist/js/pages/dashboard2.js') }}">
+    <!-- <script src="{{ URL::asset('adminlte/dist/js/pages/dashboard2.js') }}"> -->
 
     </script>
 
