@@ -60,6 +60,6 @@ Route::post('/wisatawan/{id}/update','WisatawanController@update');
 
 //UserAdmin
 //Route::get('test','DashboardController@index');
-Route::get('test','LaporanController@index');
+Route::get('test','BigDataController@index');
 
 Auth::routes();
