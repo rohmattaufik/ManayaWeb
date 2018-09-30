@@ -12,6 +12,7 @@ use App\Model\KategoriWisatawan;
 use App\Model\Transaksi;
 use App\Model\TransaksiDetail;
 use App\Model\DiskonTransaksi;
+use Exception;
 
 class TransaksiBaruController extends Controller
 {
@@ -68,54 +69,62 @@ class TransaksiBaruController extends Controller
 
     public function store(Request $request)
     {
-        // $transaksi  = Transaksi::create($request['transaksi']->all());
-        // foreach($request->id_diskons as $diskon)
-        // {
-        //     $diskonTransaksi    = DiskonTransaksi::create([
-        //         'diskon_id' => $diskon,
-        //         'transaksi_id' => $transaksi['id'],
-        //     ]);
-        // }
-        // foreach($request['transaksi_details'] as $detail)
-        // {
-        //     $detail['transaksi_id'] = $transaksi->id;
-        //     TransaksiDetail::create($detail->all());
-        // }
+        try{
+            $id_kategori = 0;
+            foreach($request['kategori_wisatawan'] as $item)
+            {
+                if($item['active'] == true)
+                {
+                    $id_kategori = $item['id'];
+                    break;
+                }
+            }
+            $transaksi  = Transaksi::create([
+                "user_id"               => $request['user']['id'],
+                "wisata_id"             => $request['user']['wisata_id'],
+                "kategori_wisatawan_id" => $id_kategori,
+                "asal_provinsi"         => $request['provinsi'],
+                "asal_kabupaten"        => $request['kabupaten'],
+                "asal_kecamatan"        => $request['kecamatan'],
+                "total_harga"           => $request['total'] + $request['total_diskon'],
+                "total_diskon"          => $request['total_diskon'],
+                "harga_akhir"           => $request['total'],
+                "is_lunas"              => 1,
+                "jumlah_bayar"          => $request['jumlah_bayar'],
+                "email_wisatawan"       => $request['email']
+            ]);
+            $data_diskon    = DiskonMapping::with('wisata')
+                                ->with('diskon')
+                                ->whereWisataId($request['user']->wisata_id)
+                                ->get();
+            foreach($data_diskon as $diskon)
+            {
+                $diskonTransaksi    = DiskonTransaksi::create([
+                    'diskon_id' => $diskon->diskon_id,
+                    'transaksi_id' => $transaksi['id'],
+                ]);
+            }
+            foreach($request['tiket'] as $detail)
+            {
+                TransaksiDetail::create([
+                    "wisatawan_id" => $detail['wisatawan_id'],
+                    "jumlah_wisatawan"=> $detail['jumlah'],
+                    "harga_satuan"=> $detail['harga_tiket'],
+                    "total_harga"=> $detail['total']
+                ]);
+                
+                $mapping = TiketMapping::whereId($detail['id'])>first();
+                $mapping->jumlah_tiket -= $detail['jumlah'];
+                $mapping->save(); 
+            }   
 
-        dd($request);
+            return response('Success', 200);
+        } catch (Exception $e)
+        {
+            return response($e, 401);
+        }
+        
     }
 
 
-    // {
-    //     "transaksi": {
-    //         "user_id": 1,
-    //         "wisata_id": 1,
-    //         "kategori_wisatawan_id": 1,
-    //         "asal_provinsi": "Jawa Tengah",
-    //         "asal_kabupaten": "Wonogiri",
-    //         "asal_kecamatan": "Wuryantoro",
-    //         "total_harga": 2000000,
-    //         "total_diskon": 500000,
-    //         "harga_akhir": 1500000,
-    //         "is_lunas": 1,
-    //         "jumlah_bayar": 1600000,
-    //         "email_wisatawan": "wisatawan@mail.com"
-    //     },
-    //     "id_diskons": [
-    //         1, 2, 3, 4
-    //     ],
-    //     "transaksi_details": [{
-    //             "wisatawan_id": 1,
-    //             "jumlah_wisatawan": 2,
-    //             "harga_satuan": 500000,
-    //             "total_harga": 1000000
-    //         },
-    //         {
-    //             "wisatawan_id": 2,
-    //             "jumlah_wisatawan": 2,
-    //             "harga_satuan": 500000,
-    //             "total_harga": 1000000
-    //         }
-    //     ]
-    // }
 }

@@ -17,4 +17,9 @@ class Diskon extends Model
     {
         return $this->hasMany('App\Model\DiskonFor');
     }
+
+    public function diskonMappings()
+    {
+        return $this->hasMany('App\Model\DiskonMapping');
+    }
 }
