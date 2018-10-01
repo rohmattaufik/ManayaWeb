@@ -6,80 +6,54 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Model\UserAdmin;
 
+use DB;
+use App\Quotation;
+
 class SuperAdminController extends Controller
 {
 
     public function index()
     {
-        $totalWisatawanLaki        = TransaksiDetail::with('Transaksis')
-                                    ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                    ->whereUser_id('1')->whereWisatawan_id(1)->sum('jumlah_wisatawan');
-        $totalWisatawanPerempuan   = TransaksiDetail::with('Transaksis')
-                                    ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                    ->whereUser_id('1')->whereWisatawan_id(2)->sum('jumlah_wisatawan');
-        $totalWisManLaki           = TransaksiDetail::with('Transaksis')
-                                    ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                    ->whereUser_id('1')->whereWisatawan_id(3)->sum('jumlah_wisatawan');
-        $totalWisManPerempuan      = TransaksiDetail::with('Transaksis')
-                                    ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                    ->whereUser_id('1')->whereWisatawan_id(4)->sum('jumlah_wisatawan');
-        $pendapatanSolo            = TransaksiDetail::with('Transaksis')
-                                    ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                    ->whereUser_id('1')->whereKategori_wisatawan_id(1)->sum('transaksi_details.total_harga');
-        $pendapatanGroup           = TransaksiDetail::with('Transaksis')
-                                    ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                    ->whereUser_id('1')->whereKategori_wisatawan_id(2)->sum('transaksi_details.total_harga');
-        $total_marketing           = BiayaMArketing::sum('jumlah_dana');
+      $TiketTerjual              = DB::SELECT('SELECT SUM(X.jumlah_wisatawan) AS TiketTerjual
+                                               FROM transaksi_details X;');
+      $TopArea                   = DB::SELECT('SELECT X.nama_provinsi, COUNT(Z.wisata_id) as Totals
+                                               FROM provinsis X, wisatas Y, transaksis Z
+                                               WHERE X.id = Y.provinsi_id AND Z.wisata_id = Y.id
+                                               GROUP BY X.nama_provinsi
+                                               ORDER BY Totals DESC
+                                               LIMIT 5;');
+      $TopWisata                 = DB::SELECT('SELECT X.nama, COUNT(Y.wisata_id) as totalPesanan
+                                               FROM wisatas X, transaksis Y
+                                               WHERE X.id = Y.wisata_id
+                                               GROUP BY X.nama
+                                               ORDER BY totalPesanan DESC
+                                               LIMIT 5;');
+      $TopTraveler               = DB::SELECT('SELECT Y.email_wisatawan, COUNT(Y.wisata_id) as totalPesanan
+                                               FROM  transaksis Y
+                                               WHERE  Y.wisata_id
+                                               GROUP BY Y.email_wisatawan
+                                               ORDER BY totalPesanan DESC
+                                               LIMIT 5;');
+      $ReportUser                = DB::SELECT('SELECT X.asal_provinsi, COUNT(X.asal_provinsi) as TotalWisatawan
+                                               FROM transaksis X
+                                               GROUP BY X.asal_provinsi
+                                               ORDER BY TotalWisatawan DESC
+                                               LIMIT 5;');
 
-        $totalWisatawan =array(
-                'totalWisnusLaki'           =>$totalWisatawanLaki,
-                'totalWisnusPerempuan'      =>$totalWisatawanPerempuan,
-                'totalWismanLaki'           =>$totalWisManLaki,
-                'totalWismanPerempuan'      =>$totalWisManPerempuan,
-                'totalTiketTerjual'         =>$totalWisatawanLaki + $totalWisatawanPerempuan + $totalWisManLaki + $totalWisManPerempuan,
-                'totalPendapatanSolo'       =>$pendapatanSolo,
-                'totalPendapatanGroup'      =>$pendapatanGroup,
-                'totalUang'                 =>$pendapatanSolo + $pendapatanGroup,
-                'totalBiayaMarketing'       => $total_marketing
+      $data =array(
+                  'tiketTerjual'  =>$TiketTerjual,
+                  'topArea'       =>$TopArea,
+                  'TopWisata'     =>$TopWisata,
+                  'TopTraveler'  =>$TopTraveler,
+                  'reportUser'  =>$ReportUser,
+              );
 
-        );
-        $grafikPerHari = DB::select('SELECT  X.x as HH,
-                                    COUNT(Z.total_harga) as total
-                                    FROM calender X
-                                    LEFT JOIN(SELECT * FROM transaksis Y WHERE DATE(Y.created_at) = CURDATE() AND Y.is_lunas = 1 AND user_id ='.Auth::user()->id.') as Z ON HOUR(Z.created_at)-2 <= X.x
-                                    WHERE X.id <13
-                                    GROUP BY HH;');
-        $grafikPerMinggu = DB::select('SELECT 
-                                X.x as HH,
-                                COUNT(Z.total_harga) as total
-                                FROM calender X
-                                LEFT JOIN(SELECT DAYOFWEEK(created_at) as Days, total_harga FROM transaksis Y WHERE Date(Y.created_at) = (CURDATE()) AND Y.is_lunas = 1 AND user_id ='.Auth::user()->id.') as Z ON Z.Days <= X.x
-                                WHERE X.id<20 AND X.id >12
-                                GROUP BY HH;');
-        $grafikPerBulan = DB::select('SELECT 
-                            X.x as HH,
-                            COUNT(Z.total_harga) as total
-                            FROM calender X
-                            LEFT JOIN(SELECT * FROM transaksis Y WHERE MONTH(Y.created_at) = MONTH(CURDATE()) AND Y.is_lunas = 1 AND user_id ='.Auth::user()->id.') as Z ON DAY(Z.created_at) <= X.x
-                            WHERE X.id>19
-                            GROUP BY HH;');
-        $data_grafik =array(
-            'grafikPerHari'             =>$grafikPerHari,
-            'grafikPerBulan'            =>$grafikPerBulan,
-            'grafikPerMinggu'           =>$grafikPerMinggu,
-        );
-        //dd($data_grafik);
-        $data_out = [
-            "data_wisatawan"    => $totalWisatawan,
-            "data_grafik"       => $data_grafik
-        ];
-    
-
-        if($totalWisatawan == null)
+        dd($data);
+        if($data == null)
         {
             return view();
         }
-        
-        return view('admin.dashboard')->with("data_out", $data_out);
+
+        return view('test')->with("data", $data);
     }
 }

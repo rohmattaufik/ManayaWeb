@@ -71,6 +71,6 @@ Route::post('/wisatawan/{id}/update','WisatawanController@update');
 
 //UserAdmin
 //Route::get('test','DashboardController@index');
-Route::get('test','BigDataController@index');
+Route::get('test','SuperAdminController@index');
 
 Auth::routes();
