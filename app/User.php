@@ -34,6 +34,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Model\Transaksi');
     }
 
+    public function wisata()
+    {
+        return $this->hasOne('App\Model\Wisata', 'id', 'wisata_id');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

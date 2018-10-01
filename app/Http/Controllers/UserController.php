@@ -75,29 +75,29 @@ class UserController extends Controller
     }
 
     public function getAuthenticatedUser()
-        {
-                try {
+    {
+        try {
 
-                        if (! $user = JWTAuth::parseToken()->authenticate()) {
-                                return response()->json(['user_not_found'], 401);
-                        }
+            if (! $user = JWTAuth::parseToken()->authenticate()) {
+                    return response()->json(['user_not_found'], 401);
+            }
 
-                } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
-                        return response()->json(['token_expired'], 401);
+                return response()->json(['token_expired'], 401);
 
-                } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
 
-                        return response()->json(['token_invalid'], 401);
+                return response()->json(['token_invalid'], 401);
 
-                } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
 
-                        return response()->json(['token_absent'], 401);
+                return response()->json(['token_absent'], 401);
 
-                }
-
-                return response()->json(compact('user'));
         }
+
+        return response()->json(compact('user'));
+    }
 
     public function checkLoginRole(Request $request) {
         if($request->username == 'superadmin') {

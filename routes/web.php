@@ -17,25 +17,36 @@
 
 Route::post('/checklogin', 'UserController@checkLoginRole');
 
-Route::post('/logout', function () {
-    return view('admin.login');
-});
+// Route::post('/logout', function () {
+//     return view('admin.login');
+// });
 
 Route::get('/', function () {
     return view('admin.login');
+});
+
+Route::get('admin-mapping', function(){
+    if(Auth::user()['role'] == 2)
+    {
+        return redirect('/admin/dashboard');
+    }
+    if(Auth::user()['role'] == 3)
+    {
+        return redirect()->route('superadmin-dashboard');
+    }
 });
 
 Route::prefix('super-admin')->group(function () {
 
     Route::get('dashboard',  function () {
         return view('admin.super-dashboard');
-    });
+    })->name('superadmin-dashboard');
 
 });
 
 Route::prefix('admin')->group(function () {
 
-    Route::get('dashboard',  'DashboardController@index')->name('admin-dashboard');
+    Route::get('dashboard',  'DashboardController@index')->name('admin-dashboard')->middleware('auth','roleAdmin');
 
     Route::get('laporan',  function () {
         return view('admin.laporan');
@@ -51,7 +62,7 @@ Route::prefix('admin')->group(function () {
 
 });
 
-Route::get('test-index', 'DashboardController@index');
+Route::get('test-index', 'PengaturanTiketController@index');
 
 // wisatawan
 Route::get('wisatawan','WisatawanController@index');

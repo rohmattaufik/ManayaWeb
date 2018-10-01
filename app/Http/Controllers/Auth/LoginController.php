@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/admin-mapping';
+
+    
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,13 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        if(Auth::user()['role'] == 2)
+        {
+            $redirectTo = '/admin/dashboard';
+        } 
+        if(Auth::user()['role'] == 3)
+        {
+            $redirectTo = '/super-admin/dashboard';
+        }
     }
 }
