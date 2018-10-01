@@ -29,8 +29,11 @@ class BigDataController extends Controller
                                     LEFT JOIN(SELECT * FROM transaksis Y WHERE DATE(Y.created_at) = CURDATE() AND Y.is_lunas = 1 AND user_id =1) as Z ON HOUR(Z.created_at)-2 <= X.x
                                     WHERE X.id <13
                                     GROUP BY HH;');
-      $RoomToGrow     = DB::SELECT('SELECT SUM(X.jumlah_penduduk)/COUNT(Y.id) as Totals
-                                    FROM provinsis X, wisatas Y;
+      $RoomToGrow     = DB::SELECT('SELECT X.nama_provinsi,
+                                    		IF (COUNT(Y.id) >0, SUM(X.jumlah_penduduk)/COUNT(Y.id), SUM(X.jumlah_penduduk)) as Totals
+                                    FROM provinsis X
+                                    LEFT JOIN  wisatas Y ON X.id = Y.provinsi_id
+                                    Group By X.nama_provinsi;
                                     ');
       $KonsumenTerbanyak = DB::SELECT('SELECT counts.asal_provinsi, MAX(counted) FROM
                                             (
