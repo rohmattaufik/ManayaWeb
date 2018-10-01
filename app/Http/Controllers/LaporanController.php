@@ -19,17 +19,17 @@ class LaporanController extends Controller
       $topProvinsi               = TransaksiDetail::with('Transaksis')
                                   ->select("transaksis.asal_provinsi",DB::raw('SUM(transaksi_details.jumlah_wisatawan) as totals' ))
                                   ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                  ->whereUser_id('1')->GroupBy('transaksis.asal_provinsi')->Orderby(DB::raw('SUM(transaksi_details.jumlah_wisatawan)'),'desc')->take(5)->get()->toArray();
+                                  ->GroupBy('transaksis.asal_provinsi')->Orderby(DB::raw('SUM(transaksi_details.jumlah_wisatawan)'),'desc')->take(5)->get()->toArray();
       $tiketPerHari              =TransaksiDetail::with('Transaksis')
                                   ->select(DB::raw('(AVG(transaksi_details.jumlah_wisatawan) / count(distinct date(transaksi_details.created_at))) as totals' ))
                                   ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                  ->whereUser_id('1')->get()->toArray();
+                                  ->get()->toArray();
       $pendapatanSolo            = TransaksiDetail::with('Transaksis')
                                   ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                  ->whereUser_id('1')->whereKategori_wisatawan_id(1)->sum('transaksi_details.total_harga');
+                                  ->whereKategori_wisatawan_id(1)->sum('transaksi_details.total_harga');
       $pendapatanGroup           = TransaksiDetail::with('Transaksis')
                                   ->join('transaksis', 'transaksis.id', '=' ,'transaksi_details.transaksi_id')
-                                  ->whereUser_id('1')->whereKategori_wisatawan_id(2)->sum('transaksi_details.total_harga');
+                                  ->whereKategori_wisatawan_id(2)->sum('transaksi_details.total_harga');
 
 
       $Laporan =array(
