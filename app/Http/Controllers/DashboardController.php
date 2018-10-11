@@ -50,12 +50,13 @@ class DashboardController extends Controller
                 'totalBiayaMarketing'       => $total_marketing
 
         );
-        $grafikPerHari = DB::select('SELECT  X.x as HH,
-                                    COUNT(Z.total_harga) as total
-                                    FROM calender X
-                                    LEFT JOIN(SELECT * FROM transaksis Y WHERE DATE(Y.created_at) = CURDATE() AND Y.is_lunas = 1) as Z ON HOUR(Z.created_at)-2 <= X.x
-                                    WHERE X.id <13
-                                    GROUP BY HH;');
+        $grafikPerHari = DB::select('SELECT 
+                              X.x as HH,
+                              COUNT(Z.total_harga) as total
+                              FROM calender X
+                              LEFT JOIN(SELECT * FROM transaksis Y WHERE DATE(Y.created_at) = CURDATE() AND Y.is_lunas = 1 AND user_id =1) as Z ON HOUR(Z.created_at)+1 = X.x OR HOUR(Z.created_at)+2 = X.x OR HOUR(Z.created_at) = X.x 
+                              WHERE X.id <13
+                              GROUP BY HH;');
         $grafikPerMinggu = DB::select('SELECT
                                 X.x as HH,
                                 COUNT(Z.total_harga) as total
@@ -67,7 +68,7 @@ class DashboardController extends Controller
                             X.x as HH,
                             COUNT(Z.total_harga) as total
                             FROM calender X
-                            LEFT JOIN(SELECT * FROM transaksis Y WHERE MONTH(Y.created_at) = MONTH(CURDATE()) AND Y.is_lunas = 1) as Z ON DAY(Z.created_at) <= X.x
+                            LEFT JOIN(SELECT * FROM transaksis Y WHERE MONTH(Y.created_at) = MONTH(CURDATE()) AND Y.is_lunas = 1) as Z ON DAY(Z.created_at) <= X.x AND DAY(Z.created_at) > X.x -7
                             WHERE X.id>19
                             GROUP BY HH;');
         $data_grafik =array(
