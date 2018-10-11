@@ -68,7 +68,7 @@ class DashboardController extends Controller
                             X.x as HH,
                             COUNT(Z.total_harga) as total
                             FROM calender X
-                            LEFT JOIN(SELECT * FROM transaksis Y WHERE MONTH(Y.created_at) = MONTH(CURDATE()) AND Y.is_lunas = 1) as Z ON DAY(Z.created_at) <= X.x AND DAY(Z.created_at) > X.x -7
+                            LEFT JOIN(SELECT * FROM transaksis Y WHERE MONTH(Y.created_at) = MONTH(CURDATE()) AND YEAR(Y.created_at) = YEAR(CURRENT_DATE()) AND Y.is_lunas = 1) as Z ON DAY(Z.created_at) <= X.x AND DAY(Z.created_at) > X.x -7
                             WHERE X.id>19
                             GROUP BY HH;');
         $data_grafik =array(
