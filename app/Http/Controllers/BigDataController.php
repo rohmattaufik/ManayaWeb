@@ -30,10 +30,9 @@ class BigDataController extends Controller
                                     WHERE X.id <13
                                     GROUP BY HH;');
       $RoomToGrow     = DB::SELECT('SELECT X.nama_provinsi,
-                                    		IF (COUNT(Y.id) >0, SUM(X.jumlah_penduduk)/COUNT(Y.id), 
-                                            SUM(X.jumlah_penduduk)) as Totals
+                                    jumlahWisatawan.jumlah/(SUM(X.jumlah_penduduk)) as Totals
                                     FROM provinsis X
-                                    LEFT JOIN  wisatas Y ON X.id = Y.provinsi_id
+                                    LEFT JOIN  (SELECT SUM(Z.jumlah_wisatawan) as Jumlah, Y.asal_provinsi as provinsi FROM transaksis Y, transaksi_details Z WHERE Z.transaksi_id = Y.id Group BY Y.asal_provinsi) AS jumlahWisatawan ON X.nama_provinsi = jumlahWisatawan.provinsi
                                     Group By X.nama_provinsi;
                                     ');
       $KonsumenTerbanyak = DB::SELECT('SELECT counts.asal_provinsi, MAX(counted) FROM
