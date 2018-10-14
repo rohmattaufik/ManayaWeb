@@ -75,12 +75,11 @@ class DashboardController extends Controller
             'grafikPerBulan'            =>$grafikPerBulan,
             'grafikPerMinggu'           =>$grafikPerMinggu,
         );
-        //dd($data_grafik);
+        // dd($data_grafik);
         $data_out = [
             "data_wisatawan"    => $totalWisatawan,
             "data_grafik"       => $data_grafik
         ];
-
 
         if($totalWisatawan == null)
         {

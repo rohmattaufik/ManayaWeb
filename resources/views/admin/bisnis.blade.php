@@ -1,6 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('content')
+
+    <input type="hidden" id="provinsi_pie_chart" name="provinsi_pie_chart" value="{{ json_encode($Laporan['DataProvinsi'])}}" >
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -11,12 +13,6 @@
                         Bisnis Big Data
                     </h1>
                 </div><!-- /.col -->
-                {{--<div class="col-sm-6">--}}
-                {{--<ol class="breadcrumb float-sm-right">--}}
-                {{--<li class="breadcrumb-item"><a href="#">Home</a></li>--}}
-                {{--<li class="breadcrumb-item active">Starter Page</li>--}}
-                {{--</ol>--}}
-                {{--</div><!-- /.col -->--}}
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -67,14 +63,14 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="chart-responsive">
                                         <canvas id="pieChart" height="196" width="297" style="width: 238px; height: 157px;"></canvas>
                                     </div>
                                     <!-- ./chart-responsive -->
                                 </div>
                                 <!-- /.col -->
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <ul class="chart-legend clearfix">
                                         <li><i class="fa fa-circle-o text-danger"></i> Jateng</li>
                                         <li><i class="fa fa-circle-o text-success"></i> Jabar</li>
@@ -83,45 +79,14 @@
                                         <li><i class="fa fa-circle-o text-primary"></i> Banten</li>
                                         <li><i class="fa fa-circle-o text-secondary"></i> Jogja</li>
                                     </ul>
-                                </div>
+                                </div> -->
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
                         </div>
-                        <!-- /.card-body -->
-                    {{--<div class="card-footer bg-white p-0">--}}
-                    {{--<ul class="nav nav-pills flex-column">--}}
-                    {{--<li class="nav-item">--}}
-                    {{--<a href="#" class="nav-link">--}}
-                    {{--United States of America--}}
-                    {{--<span class="float-right text-danger">--}}
-                    {{--<i class="fa fa-arrow-down text-sm"></i>--}}
-                    {{--12%</span>--}}
-                    {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="nav-item">--}}
-                    {{--<a href="#" class="nav-link">--}}
-                    {{--India--}}
-                    {{--<span class="float-right text-success">--}}
-                    {{--<i class="fa fa-arrow-up text-sm"></i> 4%--}}
-                    {{--</span>--}}
-                    {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="nav-item">--}}
-                    {{--<a href="#" class="nav-link">--}}
-                    {{--China--}}
-                    {{--<span class="float-right text-warning">--}}
-                    {{--<i class="fa fa-arrow-left text-sm"></i> 0%--}}
-                    {{--</span>--}}
-                    {{--</a>--}}
-                    {{--</li>--}}
-                    {{--</ul>--}}
-                    {{--</div>--}}
-                    <!-- /.footer -->
 
                     </div>
-                    {{--end waktu--}}
-
+                    
                     {{--Room To Grow--}}
                     <div class="card card-primary card-outline">
                         <div class="card-header border-transparent">
@@ -142,10 +107,10 @@
                                 <table class="table m-0">
                                     <thead>
                                     <th>
-                                        Laporan
+                                        Room To Grow
                                     </th>
                                     <th>
-                                        Jumlah
+                                        Hasil
                                     </th>
                                     </thead>
                                     <tbody>
@@ -176,16 +141,8 @@
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.card-body -->
-                    {{--<div class="card-footer clearfix">--}}
-                    {{--<a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>--}}
-                    {{--<a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>--}}
-                    {{--</div>--}}
-                    <!-- /.card-footer -->
                     </div>
-                    {{--end per kategori--}}
 
-
-                    {{--per kategori--}}
                     <div class="card card-primary card-outline">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Report Wisata</h3>
@@ -194,9 +151,6 @@
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
                                 </button>
-                                {{--<button type="button" class="btn btn-tool" data-widget="remove">--}}
-                                {{--<i class="fa fa-times"></i>--}}
-                                {{--</button>--}}
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -208,22 +162,22 @@
                                         Laporan
                                     </th>
                                     <th>
-                                        Jumlah
+                                        Hasil
                                     </th>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>Penjualan Tiket Per Hari</td>
+                                        <td>Konsumen Terbanyak Berasal Dari</td>
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
-                                                    58
+                                                    {{ $Laporan['konsumenTerbanyak'][0]->asal_provinsi }}
                                                 </span>
                                             </h3>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Tiket Per Hari</td>
+                                        <td>Jam Ramai anda dari jam</td>
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
@@ -308,56 +262,20 @@
                                     </th>
                                     </thead>
                                     <tbody>
+                                    @foreach($Laporan['buzzers'] as $key => $buzzer)
+                                    @if($key < 5)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{++$key}}</td>
                                         <td>
                                             <h3>
                                                 <span class="badge badge-danger">
-                                                    Jateng
+                                                    {{ $buzzer->nama_buzzer }} -- ( {{$buzzer->phone }} ) -- {{ $buzzer->lokasi }}
                                                 </span>
                                             </h3>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jabar
-                                                </span>
-                                            </h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jatim
-                                                </span>
-                                            </h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Jogja
-                                                </span>
-                                            </h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>
-                                            <h3>
-                                                <span class="badge badge-danger">
-                                                    Banten
-                                                </span>
-                                            </h3>
-                                        </td>
-                                    </tr>
+                                    @endif
+                                    @endforeach
 
                                     </tbody>
                                 </table>
@@ -365,175 +283,15 @@
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.card-body -->
-                    {{--<div class="card-footer clearfix">--}}
-                    {{--<a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>--}}
-                    {{--<a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>--}}
-                    {{--</div>--}}
-                    <!-- /.card-footer -->
+                    
                     </div>
-                    {{--end per kategori--}}
+                    
 
 
 
                 </div>
                 <!-- /.col-md-6 -->
             </div>
-            {{--end row 1--}}
-
-            {{--start row 2--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-12">--}}
-            {{--<div class="card card-primary card-outline">--}}
-            {{--<div class="card-footer" style="display: block;">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-sm-3 col-6">--}}
-            {{--<div class="description-block border-right">--}}
-
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-1">--}}
-            {{--<span class="description-percentage" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--<h1 class="description-header text-right">--}}
-            {{--<i class="fa fa-money text-right"></i>--}}
-            {{--</h1>--}}
-            {{--<span class="description-text" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-lg-11">--}}
-            {{--<span class="description-percentage text-success">--}}
-            {{--<i class="fa fa-caret-up"></i> 17%--}}
-            {{--</span>--}}
-
-            {{--<h5 class="description-header">--}}
-            {{--Rp. 12.902.000--}}
-            {{--</h5>--}}
-
-            {{--<span class="description-text">--}}
-            {{--Total Uang--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--</div>--}}
-
-            {{--</div>--}}
-            {{--<!-- /.description-block -->--}}
-            {{--</div>--}}
-            {{--<!-- /.col -->--}}
-            {{--<div class="col-sm-3 col-6">--}}
-            {{--<div class="description-block border-right">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-1">--}}
-            {{--<span class="description-percentage" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--<h1 class="description-header text-right">--}}
-            {{--<i class="fa fa-user-circle text-right"></i>--}}
-            {{--</h1>--}}
-            {{--<span class="description-text" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-lg-11">--}}
-            {{--<span class="description-percentage text-warning">--}}
-            {{--<i class="fa fa-caret-left"></i> 0%--}}
-            {{--</span>--}}
-
-            {{--<h5 class="description-header">--}}
-            {{--Rp. 4.002.000--}}
-            {{--</h5>--}}
-
-            {{--<span class="description-text">--}}
-            {{--Total Uang dari <br/>--}}
-            {{--Solo Traveler--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<!-- /.description-block -->--}}
-            {{--</div>--}}
-            {{--<!-- /.col -->--}}
-            {{--<div class="col-sm-3 col-6">--}}
-            {{--<div class="description-block border-right">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-1">--}}
-            {{--<span class="description-percentage" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--<h1 class="description-header text-right">--}}
-            {{--<i class="fa fa-group text-right"></i>--}}
-            {{--</h1>--}}
-            {{--<span class="description-text" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-lg-11">--}}
-            {{--<span class="description-percentage text-success">--}}
-            {{--<i class="fa fa-caret-up"></i> 20%--}}
-            {{--</span>--}}
-
-            {{--<h5 class="description-header">--}}
-            {{--Rp. 7.508.000--}}
-            {{--</h5>--}}
-
-            {{--<span class="description-text">--}}
-            {{--Total Uang <br/>--}}
-            {{--dari Grup--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<!-- /.description-block -->--}}
-            {{--</div>--}}
-            {{--<!-- /.col -->--}}
-            {{--<div class="col-sm-3 col-6">--}}
-            {{--<div class="description-block">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-lg-1">--}}
-            {{--<span class="description-percentage" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--<h1 class="description-header text-right">--}}
-            {{--<i class="fa fa-shopping-cart text-right"></i>--}}
-            {{--</h1>--}}
-            {{--<span class="description-text" style="color: white;">--}}
-            {{--.--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-lg-11">--}}
-            {{--<span class="description-percentage text-danger">--}}
-            {{--<i class="fa fa-caret-down"></i> 18%--}}
-            {{--</span>--}}
-
-            {{--<h5 class="description-header">--}}
-            {{--Rp. 3.508.000--}}
-            {{--</h5>--}}
-
-            {{--<span class="description-text">--}}
-            {{--Jumlah Biaya <br/>--}}
-            {{--Marketing--}}
-            {{--</span>--}}
-            {{--</div>--}}
-
-            {{--</div>--}}
-
-            {{--</div>--}}
-            {{--<!-- /.description-block -->--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<!-- /.row -->--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--end row 2--}}
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -844,7 +602,7 @@
 
 
     {{--saleschart--}}
-    <script src="{{ URL::asset('adminlte/dist/js/pages/dashboard2.js') }}">
+    <!-- <script src="{{ URL::asset('adminlte/dist/js/pages/dashboard2.js') }}"> -->
 
     </script>
 
@@ -914,5 +672,60 @@
             })
         })
     </script>
+
+<script>
+$(function () {
+    var data_provinsi = $.parseJSON($('#provinsi_pie_chart').val());
+    console.log(data_provinsi);
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
+    var pieChart       = new Chart(pieChartCanvas);
+    var data_area = [];
+    var label = [];
+    jQuery.each(data_provinsi, function(k,v){
+        console.log(v.Nama);
+        var color = "#"+(Math.floor(Math.random() * 99) + 1  ) + (Math.floor(Math.random() * 99) + 1  )+(Math.floor(Math.random() * 99) + 1  );
+        data_area[k] = {
+            value : v.COUNT,
+            label : v.Nama, 
+            color : color,
+            highlight : color
+        };
+    });
+    console.log(data_area);
+    var PieData = data_area;
+    var pieOptions     = {
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke    : true,
+        //String - The colour of each segment stroke
+        segmentStrokeColor   : '#fff',
+        //Number - The width of each segment stroke
+        segmentStrokeWidth   : 1,
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        //Number - Amount of animation steps
+        animationSteps       : 100,
+        //String - Animation easing effect
+        animationEasing      : 'easeOutBounce',
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate        : true,
+        //Boolean - Whether we animate scaling the Doughnut from the centre
+        animateScale         : false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive           : true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio  : false,
+        //String - A legend template
+        legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
+        //String - A tooltip template
+        tooltipTemplate      : '<%=value %> <%=label%> users'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions)
+    //-----------------
+    //- END PIE CHART -
+    //-----------------
+});
+</script>
 
 @endsection
