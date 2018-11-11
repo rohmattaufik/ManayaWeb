@@ -27,4 +27,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('transaksi-baru','TransaksiBaruController@index');
     Route::post('transaksi-submit','TransaksiBaruController@store');
 });
+Route::get('ping', function(){
+ return response('success', 200);
+});
 

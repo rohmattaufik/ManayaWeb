@@ -2,7 +2,7 @@
 namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 
-class Provinsi extends Model
+class Negara extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -10,12 +10,12 @@ class Provinsi extends Model
      * @var array
      */
     protected $fillable = [
-        'negara_id','nama_provinsi', 'jumlah_penduduk'
+        'nama_negara', 'jumlah_penduduk'
     ];
 
-    public function kabupatens()
+    public function provinsis()
     {
-        return $this->hasMany('App\Model\Kabupaten');
+        return $this->hasMany('App\Model\Provinsi');
     }
 
 }
