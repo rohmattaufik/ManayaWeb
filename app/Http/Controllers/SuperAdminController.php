@@ -39,6 +39,7 @@ class SuperAdminController extends Controller
                                                GROUP BY X.asal_provinsi
                                                ORDER BY TotalWisatawan DESC
                                                LIMIT 5;');
+    $totalUser = User::all()->count();
 
       $data =array(
                   'tiketTerjual'  =>$TiketTerjual,
@@ -46,14 +47,15 @@ class SuperAdminController extends Controller
                   'TopWisata'     =>$TopWisata,
                   'TopTraveler'  =>$TopTraveler,
                   'reportUser'  =>$ReportUser,
+                  'totalUser'   => $totalUser
               );
 
-        dd($data);
+        // dd($data);
         if($data == null)
         {
             return view();
         }
 
-        return view('test')->with("data", $data);
+        return view('admin.super-dashboard')->with("data", $data);
     }
 }
