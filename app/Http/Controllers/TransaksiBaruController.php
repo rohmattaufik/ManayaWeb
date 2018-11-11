@@ -12,6 +12,10 @@ use App\Model\KategoriWisatawan;
 use App\Model\Transaksi;
 use App\Model\TransaksiDetail;
 use App\Model\DiskonTransaksi;
+use App\Model\Negara;
+use App\Model\Provinsi;
+use App\Model\Kabupaten;
+use DB;
 use Exception;
 
 class TransaksiBaruController extends Controller
@@ -57,73 +61,82 @@ class TransaksiBaruController extends Controller
             }
             $item['diskon'] = $total_diskon;
         }
+        $negara = Negara::with('provinsis')->get();
+        foreach($negara as $item)
+        {
+            foreach($item['provinsis'] as $provinsi)
+            {
+                $provinsi['kabupaten']  = Kabupaten::whereProvinsiId($provinsi['id'])->get();
+            }
+        }
+        
         $data_out = [
             'user'                  =>  $currentUser,
             'wisata'                =>  $tempat_wisata,
             'tiket'                 =>  $data_tiket,
-            'kategori_wisatawan'    => $kategori_wisatawan
+            'kategori_wisatawan'    => $kategori_wisatawan,
+            'wilayah'               => $negara
         ];
 
         return $data_out;
     }
 
-    public function store(Request $request)
+    public function store(Request $requests)
     {
-        try{
-            $id_kategori = 0;
-            foreach($request['kategori_wisatawan'] as $item)
+        DB::transaction(function () {
+            foreach($requests as $request)
             {
-                if($item['active'] == true)
+                $id_kategori = 0;
+                foreach($request['kategori_wisatawan'] as $item)
                 {
-                    $id_kategori = $item['id'];
-                    break;
+                    if($item['active'] == true)
+                    {
+                        $id_kategori = $item['id'];
+                        break;
+                    }
                 }
-            }
-            $transaksi  = Transaksi::create([
-                "user_id"               => $request['user']['id'],
-                "wisata_id"             => $request['user']['wisata_id'],
-                "kategori_wisatawan_id" => $id_kategori,
-                "asal_provinsi"         => $request['provinsi'],
-                "asal_kabupaten"        => $request['kabupaten'],
-                "asal_kecamatan"        => $request['kecamatan'],
-                "total_harga"           => $request['total'] + $request['total_diskon'],
-                "total_diskon"          => $request['total_diskon'],
-                "harga_akhir"           => $request['total'],
-                "is_lunas"              => 1,
-                "jumlah_bayar"          => $request['jumlah_bayar'],
-                "email_wisatawan"       => $request['email']
-            ]);
-            $data_diskon    = DiskonMapping::with('wisata')
-                                ->with('diskon')
-                                ->whereWisataId($request['user']->wisata_id)
-                                ->get();
-            foreach($data_diskon as $diskon)
-            {
-                $diskonTransaksi    = DiskonTransaksi::create([
-                    'diskon_id' => $diskon->diskon_id,
-                    'transaksi_id' => $transaksi['id'],
+                $transaksi  = Transaksi::create([
+                    "user_id"               => $request['user']['id'],
+                    "wisata_id"             => $request['user']['wisata_id'],
+                    "kategori_wisatawan_id" => $id_kategori,
+                    "asal_provinsi"         => $request['provinsi'],
+                    "asal_kabupaten"        => $request['kabupaten'],
+                    "asal_kecamatan"        => $request['kecamatan'],
+                    "total_harga"           => $request['total'] + $request['total_diskon'],
+                    "total_diskon"          => $request['total_diskon'],
+                    "harga_akhir"           => $request['total'],
+                    "is_lunas"              => 1,
+                    "jumlah_bayar"          => $request['jumlah_bayar'],
+                    "email_wisatawan"       => $request['email']
                 ]);
-            }
-            foreach($request['tiket'] as $detail)
-            {
-                TransaksiDetail::create([
-                    "wisatawan_id" => $detail['wisatawan_id'],
-                    "jumlah_wisatawan"=> $detail['jumlah'],
-                    "harga_satuan"=> $detail['harga_tiket'],
-                    "total_harga"=> $detail['total']
-                ]);
-                
-                $mapping = TiketMapping::whereId($detail['id'])>first();
-                $mapping->jumlah_tiket -= $detail['jumlah'];
-                $mapping->save(); 
-            }   
+                $data_diskon    = DiskonMapping::with('wisata')
+                                    ->with('diskon')
+                                    ->whereWisataId($request['user']->wisata_id)
+                                    ->get();
+                foreach($data_diskon as $diskon)
+                {
+                    $diskonTransaksi    = DiskonTransaksi::create([
+                        'diskon_id' => $diskon->diskon_id,
+                        'transaksi_id' => $transaksi['id'],
+                    ]);
+                }
+                foreach($request['tiket'] as $detail)
+                {
+                    TransaksiDetail::create([
+                        "wisatawan_id" => $detail['wisatawan_id'],
+                        "jumlah_wisatawan"=> $detail['jumlah'],
+                        "harga_satuan"=> $detail['harga_tiket'],
+                        "total_harga"=> $detail['total']
+                    ]);
+                    
+                    $mapping = TiketMapping::whereId($detail['id'])>first();
+                    $mapping->jumlah_tiket -= $detail['jumlah'];
+                    $mapping->save(); 
+                }   
 
-            return response('Success', 200);
-        } catch (Exception $e)
-        {
-            return response($e, 401);
-        }
-        
+                return response('Success', 200);
+            }
+        });       
     }
 
 

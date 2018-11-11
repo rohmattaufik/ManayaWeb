@@ -22,7 +22,7 @@ class BigDataController extends Controller
                                     LEFT JOIN(SELECT C.nama_provinsi, A.id FROM transaksis A, wisatas B, provinsis C
                                           WHERE A.is_lunas = 1 AND A.wisata_id = B.id AND B.provinsi_id = C.id )
                           			    AS Z ON  Z.nama_provinsi =X.nama_provinsi
-                                    GROUP BY Nama;');
+                                    GROUP BY Nama ORDER BY COUNT DESC;');
       $PolaWisata     = DB::SELECT('SELECT X.x as HH,
                                     	     COUNT(Z.total_harga) as total
                                     FROM calender X
@@ -30,9 +30,9 @@ class BigDataController extends Controller
                                     WHERE X.id <13
                                     GROUP BY HH;');
       $RoomToGrow     = DB::SELECT('SELECT X.nama_provinsi,
-                                    		IF (COUNT(Y.id) >0, SUM(X.jumlah_penduduk)/COUNT(Y.id), SUM(X.jumlah_penduduk)) as Totals
+                                    jumlahWisatawan.jumlah/(SUM(X.jumlah_penduduk)) as Totals
                                     FROM provinsis X
-                                    LEFT JOIN  wisatas Y ON X.id = Y.provinsi_id
+                                    LEFT JOIN  (SELECT SUM(Z.jumlah_wisatawan) as Jumlah, Y.asal_provinsi as provinsi FROM transaksis Y, transaksi_details Z WHERE Z.transaksi_id = Y.id Group BY Y.asal_provinsi) AS jumlahWisatawan ON X.nama_provinsi = jumlahWisatawan.provinsi
                                     Group By X.nama_provinsi;
                                     ');
       $KonsumenTerbanyak = DB::SELECT('SELECT counts.asal_provinsi, MAX(counted) FROM
@@ -42,7 +42,8 @@ class BigDataController extends Controller
                                                 WHERE is_lunas = 1
                                                 GROUP BY asal_provinsi
                                             ) AS counts;');
-      $Buzzer          =  DB::SELECT('SELECT X.nama_buzzer FROM buzzers X;');
+      $Buzzer          =  DB::SELECT('SELECT X.nama_buzzer, X.phone, Z.nama as lokasi FROM buzzers X, lokasi_buzzers Y, wisatas Z
+                            WHERE Y.buzzer_id = X.id AND Y.wisata_id = Z.id;');
 
       $Laporan =array(
               'DataProvinsi'          =>$DataProvinsi,
@@ -52,13 +53,14 @@ class BigDataController extends Controller
               'buzzers'               =>$Buzzer
 
       );
-      dd($Laporan);
+    //   dd($Laporan);
 
       if($Laporan == null)
       {
           return view();
       }
-          return view('test')->with("Laporan", $Laporan);
+          return view('admin.bisnis')->with("Laporan", $Laporan);
   }
 
 }
+    

@@ -54,7 +54,6 @@ class LaporanController extends Controller
               'grafikperHari'         =>$grafikPerHari
 
       );
-    dd($Laporan);
 
       if($Laporan == null)
       {

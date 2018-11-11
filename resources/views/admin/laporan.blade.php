@@ -57,21 +57,11 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="chart-responsive">
                                             <canvas id="pieChart" height="196" width="297" style="width: 238px; height: 157px;"></canvas>
                                         </div>
                                         <!-- ./chart-responsive -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <ul class="chart-legend clearfix">
-                                            <li><i class="fa fa-circle-o text-danger"></i> {{$Laporan['topProvinsi'][0]['asal_provinsi']}}</li>
-                                            <li><i class="fa fa-circle-o text-success"></i> {{$Laporan['topProvinsi'][1]['asal_provinsi']}}</li>
-                                            <li><i class="fa fa-circle-o text-warning"></i> {{$Laporan['topProvinsi'][2]['asal_provinsi']}}</li>
-                                            <li><i class="fa fa-circle-o text-info"></i>  {{$Laporan['topProvinsi'][3]['asal_provinsi']}}</li>
-                                            <li><i class="fa fa-circle-o text-primary"></i>  {{$Laporan['topProvinsi'][4]['asal_provinsi']}}</li>
-                                        </ul>
                                     </div>
                                     <!-- /.col -->
                                 </div>

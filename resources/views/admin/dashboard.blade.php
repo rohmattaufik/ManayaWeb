@@ -2,6 +2,8 @@
 
 @section('content')
    <input type="hidden" id="data_grafik" name="grafik" value="{{ json_encode($data_out['data_grafik']['grafikPerHari'])}}">
+   <input type="hidden" id="data_grafik_week" name="grafik" value="{{ json_encode($data_out['data_grafik']['grafikPerMinggu'])}}">
+   <input type="hidden" id="data_grafik_month" name="grafik" value="{{ json_encode($data_out['data_grafik']['grafikPerBulan'])}}">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -35,9 +37,9 @@
                         </div>
                         <div class="card-body table-responsive pad text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-info">Today So Far</button>
-                                <button type="button" class="btn btn-success">Minggu Ini</button>
-                                <button type="button" class="btn btn-danger">Bulan Ini</button>
+                                <button type="button" id="day" class="btn btn-info">Today So Far</button>
+                                <button type="button" id="week" class="btn btn-success">Minggu Ini</button>
+                                <button type="button" id="month" class="btn btn-danger">Bulan Ini</button>
                             </div>
                         </div>
                     </div>
@@ -647,6 +649,73 @@
     </script>
 
 <script>
+$('#week').click(function(){
+    'use strict'
+
+    // var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+    // var salesChart       = new Chart(salesChartCanvas);
+    var data_grafik = $.parseJSON($('#data_grafik_week').val());
+    var data_area = [];
+    var label = [];
+    jQuery.each(data_grafik, function(k,v){
+        data_area[k] = JSON.parse(v.total);
+        if(k == 0)
+        {
+            label[k]    = "Senin";
+        } else if(k == 1)
+        {
+            label[k]    = "Selasa";
+        } else if(k == 2)
+        {
+            label[k]    = "Rabu";
+        } else if(k == 3)
+        {
+            label[k]    = "Kamis";
+        } else if(k == 4)
+        {
+            label[k]    = "Jumat";
+        } else if(k == 5)
+        {
+            label[k]    = "Sabtu";
+        } else
+        {
+            label[k]    = "Minggu";
+        }
+        
+    });
+    render_grafik(label, data_area);
+});
+
+$('#month').click(function(){
+    'use strict'
+
+    // var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+    // var salesChart       = new Chart(salesChartCanvas);
+    var data_grafik = $.parseJSON($('#data_grafik_month').val());
+    var data_area = [];
+    var label = [];
+    jQuery.each(data_grafik, function(k,v){
+        data_area[k] = JSON.parse(v.total);
+        label[k]    = "Minggu ke-" + (k+1);
+    });
+    render_grafik(label, data_area);
+});
+
+$('#day').click(function(){
+    'use strict'
+
+    // var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+    // var salesChart       = new Chart(salesChartCanvas);
+    var data_grafik = $.parseJSON($('#data_grafik').val());
+    var data_area = [];
+    var label = [];
+    jQuery.each(data_grafik, function(k,v){
+        data_area[k] = JSON.parse(v.total);
+        label[k]    = "Jam " + JSON.parse(v.HH);
+    });
+    render_grafik(label, data_area);
+});
+
 $(function () {
 
 'use strict'
@@ -669,10 +738,8 @@ var data_area = [];
 var label = [];
 jQuery.each(data_grafik, function(k,v){
     data_area[k] = JSON.parse(v.total);
-    console.log(v);
     label[k]    = "Jam " + JSON.parse(v.HH);
 });
-console.log(data_area);
 
 var salesChartData = {
   
@@ -749,6 +816,84 @@ salesChart.Line(salesChartData, salesChartOptions)
 
 
 })
+
+function render_grafik(label, data_area){
+var salesChartCanvas = $('#salesChart').get(0).getContext('2d')
+// This will get the first returned node in the jQuery collection.
+var salesChart       = new Chart(salesChartCanvas)
+var salesChartData = {
+  
+  labels  : label,
+  datasets: [
+    // {
+    //   label               : 'Electronics',
+    //   fillColor           : '#dee2e6',
+    //   strokeColor         : '#ced4da',
+    //   pointColor          : '#ced4da',
+    //   pointStrokeColor    : '#c1c7d1',
+    //   pointHighlightFill  : '#fff',
+    //   pointHighlightStroke: 'rgb(220,220,220)',
+    //   data                : [65, 59, 80, 81, 56, 55, 40]
+    // },
+    {
+      label               : 'Digital Goods',
+      fillColor           : 'rgba(0, 123, 255, 0.9)',
+      strokeColor         : 'rgba(0, 123, 255, 1)',
+      pointColor          : '#3b8bba',
+      pointStrokeColor    : 'rgba(0, 123, 255, 1)',
+      pointHighlightFill  : '#fff',
+      pointHighlightStroke: 'rgba(0, 123, 255, 1)',
+      data                : data_area
+    }
+  ]
+}
+
+var salesChartOptions = {
+  //Boolean - If we should show the scale at all
+  showScale               : true,
+  //Boolean - Whether grid lines are shown across the chart
+  scaleShowGridLines      : false,
+  //String - Colour of the grid lines
+  scaleGridLineColor      : 'rgba(0,0,0,.05)',
+  //Number - Width of the grid lines
+  scaleGridLineWidth      : 1,
+  //Boolean - Whether to show horizontal lines (except X axis)
+  scaleShowHorizontalLines: true,
+  //Boolean - Whether to show vertical lines (except Y axis)
+  scaleShowVerticalLines  : true,
+  //Boolean - Whether the line is curved between points
+  bezierCurve             : true,
+  //Number - Tension of the bezier curve between points
+  bezierCurveTension      : 0.3,
+  //Boolean - Whether to show a dot for each point
+  pointDot                : false,
+  //Number - Radius of each point dot in pixels
+  pointDotRadius          : 4,
+  //Number - Pixel width of point dot stroke
+  pointDotStrokeWidth     : 1,
+  //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+  pointHitDetectionRadius : 20,
+  //Boolean - Whether to show a stroke for datasets
+  datasetStroke           : true,
+  //Number - Pixel width of dataset stroke
+  datasetStrokeWidth      : 2,
+  //Boolean - Whether to fill the dataset with a color
+  datasetFill             : true,
+  //String - A legend template
+  legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%=datasets[i].label%></li><%}%></ul>',
+  //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+  maintainAspectRatio     : false,
+  //Boolean - whether to make the chart responsive to window resizing
+  responsive              : true
+}
+
+//Create the line chart
+salesChart.Line(salesChartData, salesChartOptions)
+
+//---------------------------
+//- END MONTHLY SALES CHART -
+//---------------------------
+}
 </script>
 
     {{--<!-- OPTIONAL SCRIPTS -->--}}

@@ -48,17 +48,48 @@ Route::prefix('admin')->group(function () {
 
     Route::get('dashboard',  'DashboardController@index')->name('admin-dashboard')->middleware('auth','roleAdmin');
 
-    Route::get('laporan',  function () {
-        return view('admin.laporan');
-    });
+    Route::get('laporan',  'LaporanController@index');
 
-    Route::get('bisnis',  function () {
-        return view('admin.bisnis');
-    });
+    Route::get('bisnis',  'BigDataController@index');
 
     Route::get('pengaturan-tiket',  function () {
         return view('admin.pengaturan-tiket');
     });
+
+    Route::prefix('buzzer')->group(function () {
+        Route::get('/', function(){
+            return view('admin.buzzer.index');
+        });
+
+        Route::get('form', function(){
+            return view('admin.buzzer.form');
+        });
+
+        Route::get('mapping', function(){
+            return view('admin.buzzer.form_mapping');
+        });
+    });
+
+    Route::prefix('tiket')->group(function () {
+        Route::get('/', function(){
+            return view('admin.tiket.index');
+        });
+    
+        Route::get('form', function(){
+            return view('admin.tiket.form');
+        });
+    });
+
+    Route::prefix('operator')->group(function () {
+        Route::get('/', function(){
+            return view('admin.operator.index');
+        });
+    
+        Route::get('form', function(){
+            return view('admin.operator.form');
+        });
+    });
+ 
 
 });
 
