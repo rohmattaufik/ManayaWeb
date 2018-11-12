@@ -23,7 +23,7 @@ Route::post('/checklogin', 'UserController@checkLoginRole');
 
 Route::get('/', function () {
     return view('admin.login');
-});
+})->name('login-user');
 
 Route::get('admin-mapping', function(){
     if(Auth::user()['role'] == 2)
@@ -38,9 +38,7 @@ Route::get('admin-mapping', function(){
 
 Route::prefix('super-admin')->group(function () {
 
-    Route::get('dashboard',  function () {
-        return view('admin.super-dashboard');
-    })->name('superadmin-dashboard');
+    Route::get('dashboard', 'SuperAdminController@index')->name('superadmin-dashboard');
 
 });
 
