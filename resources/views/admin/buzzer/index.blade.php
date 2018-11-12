@@ -48,43 +48,36 @@
                                         <th scope="col">Action</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikita </td>
-                                            <td>085229997676</td>
-                                            <td>Candi Prambanan</td>
-                                            <td>12 Oktober 2018</td>
-                                            <td>20 Oktober 2018</td>
-                                            <td>0</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>John </td>
-                                            <td>085229997676</td>
-                                            <td>Lawang Sewu</td>
-                                            <td>12 Oktober 2018</td>
-                                            <td>20 Oktober 2018</td>
-                                            <td>20</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Winny </td>
-                                            <td>085229917676</td>
-                                            <td>Candi Mendhut</td>
-                                            <td>12 September 2018</td>
-                                            <td>20 Oktober 2018</td>
-                                            <td>80</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
-                                        </tr>
+                                      <?php $count = 0; ?>
+                                        @foreach($buzzers as $buzzer)
+                                          <tr>
+                                              <td><?php echo ++$count; ?></td>
+                                              <td>{{$buzzer->nama_buzzer}} </td>
+                                              <td>{{$buzzer->phone}}</td>
+                                              <td>{{$buzzer->nama}}</td>
+                                              <td>{{$buzzer->waktu_mulai}}</td>
+                                              <td>{{$buzzer->waktu_selesai}}</td>
+                                              <td>{{$buzzer->poin}}</td>
+                                              <td>
+                                                <a type="button" href="{{ url(action('LokasiBuzzerController@edit',[$buzzer->id])) }}"
+                                                 class="btn btn-default">
+                                                  Edit
+                                                </a>
+                                                <form method="post" action="{{ url(action('LokasiBuzzerController@delete')) }}">
+                                                    {{ csrf_field() }}
+                                                          <input type="hidden" name="id" value="{{$buzzer->id}}" />
+                                                          <button type="submit" class="btn btn-default">Delete</button>
+                                                </form>
+                                              </td>
+                                          </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.card-body -->
-                    
+
                     <!-- /.card-footer -->
                     </div>
                     {{--end per kategori--}}
@@ -101,5 +94,3 @@
     </div>
     <!-- /.content -->
 @endsection
-
-

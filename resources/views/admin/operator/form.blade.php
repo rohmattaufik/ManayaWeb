@@ -36,7 +36,8 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="box box-primary">
-                                <form role="form">
+                              <form method="post" action="{{ url(action('OperatorController@store')) }}">
+                                  {{ csrf_field() }}
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="nama">Nama Operator</label>
@@ -44,7 +45,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="usernama">Username Operator</label>
-                                            <input type="text" class="form-control" name="usernama" placeholder="Enter username">
+                                            <input type="text" class="form-control" name="username" placeholder="Enter username">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email Operator</label>
@@ -56,30 +57,29 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Pilih Tempat Wisata</label>
-                                            <select class="form-control">
-                                                <option>option 1</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
+                                            <select class="form-control" name="wisata_id">
+                                                <option disabled selected value> -- Select Wisata -- </option>
+                                                @foreach($wisatas as $wisata)
+                                                  <option value="{{$wisata->id}}">{{$wisata->nama}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Role</label>
-                                            <select class="form-control">
-                                                <option>operator</option>
-                                                <option>administrator</option>
-                                                <option>superadmin</option>
+                                            <select class="form-control" name="role">
+                                                <option value="1">operator</option>
+                                                <option value="2">administrator</option>
+                                                <option value="3">superadmin</option>
                                             </select>
                                         </div>
                                         <div class="checkbox">
                                             <label>
-                                            <input type="checkbox" name="is_active"> Is Active
+                                            <input type="checkbox" name="flag_active"> Is Active
                                             </label>
                                         </div>
                                     </div>
                                         <!-- /.box-body -->
-                        
+
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
-                    
+
                     <!-- /.card-footer -->
                     </div>
                     {{--end per kategori--}}
@@ -104,5 +104,3 @@
     </div>
     <!-- /.content -->
 @endsection
-
-

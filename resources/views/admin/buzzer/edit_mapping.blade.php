@@ -25,7 +25,7 @@
                     {{--Tambah Buzzer--}}
                     <div class="card card-primary card-outline">
                         <div class="card-header border-transparent">
-                            <h3 class="card-title">Atur Buzzer</h3>
+                            <h3 class="card-title">Edit Informasi Buzzer </h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
@@ -36,25 +36,31 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="box box-primary">
-                              <form method="post" action="{{ url(action('LokasiBuzzerController@store')) }}">
+                              <form method="post" action="{{ url(action('LokasiBuzzerController@update', $databuzzer->id))}}">
                                   {{ csrf_field() }}
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label>Pilih Buzzer</label>
                                             <select class="form-control" name="buzzer_id">
-                                                <option disabled selected value> -- Select Buzzer -- </option>
                                                 @foreach($buzzers as $buzzer)
-                                                  <option value="{{$buzzer->id}}">{{$buzzer->nama_buzzer}}</option>
+                                                    @if($databuzzer->buzzer_id == $buzzer->id)
+                                                      <option value="{{$buzzer->id}}" selected>{{$buzzer->nama_buzzer}}</option>
+                                                    @else
+                                                      <option value="{{$buzzer->id}}">{{$buzzer->nama_buzzer}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Pilih Tempat Wisata</label>
                                             <select class="form-control" name="wisata_id">
-                                                <option disabled selected value> -- Select Wisata -- </option>
                                                 @foreach($wisatas as $wisata)
-                                                  <option value="{{$wisata->id}}">{{$wisata->nama}}</option>
-                                                  @endforeach
+                                                    @if($databuzzer->wisata_id == $wisata->id)
+                                                      <option value="{{$wisata->id}}" selected>{{$wisata->nama}}</option>
+                                                    @else
+                                                      <option value="{{$wisata->id}}">{{$wisata->nama}}</option>
+                                                    @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -64,7 +70,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" name="waktu_mulai" class="form-control pull-right" placeholder="yyyy-mm-dd" id="datepicker">
+                                                <input type="text" name="waktu_mulai" class="form-control pull-right" value="{{$databuzzer->waktu_mulai}}" id="datepicker">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -74,12 +80,12 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" name="waktu_selesai" class="form-control pull-right" placeholder="yyyy-mm-dd" id="datepicker">
+                                                <input type="text" name="waktu_selesai" class="form-control pull-right" value="{{$databuzzer->waktu_selesai}}" id="datepicker">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="poin">Poin</label>
-                                            <input type="number" name="poin" class="form-control" name="poin" placeholder="Enter poin">
+                                            <input type="number" name="poin" class="form-control" name="poin" value="{{$databuzzer->poin}}" placeholder="Enter poin">
                                         </div>
                                     </div>
 

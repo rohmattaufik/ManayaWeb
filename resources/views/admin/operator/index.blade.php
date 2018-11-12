@@ -48,43 +48,41 @@
                                         <th scope="col">Action</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Sony </td>
-                                            <td>Operator</td>
-                                            <td>sony</td>
-                                            <td>sony@manaya.com</td>
-                                            <td>Ragunan</td>
-                                            <td>Aktif</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Broto </td>
-                                            <td>Operator</td>
-                                            <td>broto</td>
-                                            <td>broto@manaya.com</td>
-                                            <td>Kaliombo</td>
-                                            <td>Aktif</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Bam </td>
-                                            <td>Administrator</td>
-                                            <td>bam</td>
-                                            <td>bam@manaya.com</td>
-                                            <td>-</td>
-                                            <td>Aktif</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
-                                        </tr>
+                                      <?php $count = 0; ?>
+                                        @foreach($users as $user)
+                                          <tr>
+                                              <td><?php echo ++$count; ?></td>
+                                              <td>{{$user->nama}} </td>
+                                              <td>
+                                                @if($user->role === 1)
+                                                  Operator
+                                                @elseif($user->role === 2)
+                                                  Admin
+                                                @elseif($user->role === 3)
+                                                  Super Admin
+                                                @endif
+                                              </td>
+                                              <td>{{$user->nama}}</td>
+                                              <td>{{$user->email}}</td>
+                                              <td>{{$user->nama_wisata}}</td>
+                                              <td>Aktif</td>
+                                              <td>
+                                                  Edit
+                                                  <form method="post" action="{{ url(action('OperatorController@delete')) }}">
+                                                      {{ csrf_field() }}
+                                                            <input type="hidden" name="id" value="{{$user->id}}" />
+                                                            <button type="submit" class="btn btn-default">Delete</button>
+                                                  </form>
+                                              </td>
+                                          </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.card-body -->
-                    
+
                     <!-- /.card-footer -->
                     </div>
                     {{--end per kategori--}}
@@ -101,5 +99,3 @@
     </div>
     <!-- /.content -->
 @endsection
-
-

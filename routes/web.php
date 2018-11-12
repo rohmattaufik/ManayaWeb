@@ -57,39 +57,49 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('buzzer')->group(function () {
-        Route::get('/', function(){
-            return view('admin.buzzer.index');
-        });
-
         Route::get('form', function(){
             return view('admin.buzzer.form');
         });
 
-        Route::get('mapping', function(){
-            return view('admin.buzzer.form_mapping');
-        });
+        Route::get('/', 'LokasiBuzzerController@index');
+        Route::get('/mapping', 'LokasiBuzzerController@create');
+        Route::post('mapping/submit', 'LokasiBuzzerController@store');
+        Route::get('mapping/edit/{id}', 'LokasiBuzzerController@edit');
+        Route::post('mapping/update/{id}', 'LokasiBuzzerController@update');
+        Route::post('mapping/delete', 'LokasiBuzzerController@delete');
+
+        Route::get('create', 'BuzzerController@create');
+        Route::post('submit', 'BuzzerController@store');
+        Route::get('edit/{id}', 'BuzzerController@edit');
+        Route::post('update/{id}', 'BuzzerController@update');
+        Route::post('delete', 'BuzzerController@delete');
+
     });
 
     Route::prefix('tiket')->group(function () {
         Route::get('/', function(){
             return view('admin.tiket.index');
         });
-    
+
         Route::get('form', function(){
             return view('admin.tiket.form');
         });
     });
 
     Route::prefix('operator')->group(function () {
-        Route::get('/', function(){
-            return view('admin.operator.index');
-        });
-    
-        Route::get('form', function(){
-            return view('admin.operator.form');
-        });
+        Route::get('/', 'OperatorController@index');
+        Route::get('create', 'OperatorController@create');
+        Route::post('submit', 'OperatorController@store');
+        Route::post('delete', 'OperatorController@delete');
+        // Route::get('/', function(){
+        //     return view('admin.operator.index');
+        // });
+
+        // Route::get('form', function(){
+        //     return view('admin.operator.form');
+        // });
     });
- 
+
 
 });
 
@@ -97,10 +107,9 @@ Route::get('test-index', 'PengaturanTiketController@index');
 
 // wisatawan
 Route::get('wisatawan','WisatawanController@index');
-Route::post('/wisatawan/store','WisatawanController@store');
 Route::post('/wisatawan/{id}/update','WisatawanController@update');
+Route::post('/wisatawan/store','WisatawanController@store');
 
-//UserAdmin
 //Route::get('test','DashboardController@index');
 Route::get('test','SuperAdminController@index');
 
