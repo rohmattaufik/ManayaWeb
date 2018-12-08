@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
                         <i class="fa fa-ticket"></i>
-                        Tambah Buzzer
+                        Tambah Diskon
                     </h1>
                 </div>
             </div><!-- /.row -->
@@ -25,7 +25,7 @@
                     {{--Tambah Buzzer--}}
                     <div class="card card-primary card-outline">
                         <div class="card-header border-transparent">
-                            <h3 class="card-title">Tambah Buzzer</h3>
+                            <h3 class="card-title">Tambah Diskon</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
@@ -36,15 +36,15 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="box box-primary">
-                                <form role="form" method="post" action="{{ !empty($buzzer) == TRUE ? '/admin/buzzer/update/'.$buzzer->id : '/admin/buzzer/submit'}}">
+                                <form role="form" method="post" action="{{ route('diskon-submit')}}">
                                     <div class="box-body">
                                         <div class="form-group">
-                                            <label for="nama">Nama Buzzer</label>
-                                            <input type="text" class="form-control" name="nama_buzzer" placeholder="Enter name" value="{{ !empty($buzzer) == TRUE ? ''.$buzzer->nama : ''}}">
+                                            <label for="nama">Nama Diskon</label>
+                                            <input type="text" class="form-control" name="nama_diskon" placeholder="Enter name">
                                         </div>
                                         <div class="form-group">
-                                            <label for="phone">Phone</label>
-                                            <input type="text" class="form-control" name="phone" placeholder="Phone" value="{{ !empty($buzzer) == TRUE ? ''.$buzzer->phone : ''}}">
+                                            <label for="persen">Jumlah Persen</label>
+                                            <input type="number" class="form-control" name="jumlah_persen" placeholder="Jumlah Persen">
                                         </div>
                                     </div>
                                         <!-- /.box-body -->

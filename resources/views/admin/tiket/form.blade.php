@@ -36,34 +36,31 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="box box-primary">
-                                <form role="form">
+                                <form role="form" method="post" action="{{ route('tiket-submit') }}">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="nama">Nama Tiket</label>
-                                            <input type="text" class="form-control" name="nama" placeholder="Enter name">
+                                            <select class="form-control" name='wisatawan_id'>
+                                                @foreach ($wisatawans as $wisatawan)
+                                                    <option value="{{ $wisatawan['id'] }}">{{ $wisatawan['nama']}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Pilih Tempat Wisata</label>
-                                            <select class="form-control">
-                                                <option>option 1</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
+                                            <select class="form-control" name='wisata_id'>
+                                                @foreach ($wisatas as $wisata)
+                                                <option value="{{ $wisata['id'] }}">{{$wisata['nama']}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="jumlah">Harga</label>
-                                            <input type="number" class="form-control" name="harga" placeholder="Harga">
+                                            <input type="number" class="form-control" name="harga_tiket" placeholder="Harga">
                                         </div>
                                         <div class="form-group">
                                             <label for="jumlah">Jumlah</label>
-                                            <input type="number" class="form-control" name="jumlah" placeholder="Jumlah Tiket">
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                            <input type="checkbox" name="is_active"> Is Active
-                                            </label>
+                                            <input type="number" class="form-control" name="jumlah_tiket" placeholder="Jumlah Tiket">
                                         </div>
                                     </div>
                                         <!-- /.box-body -->

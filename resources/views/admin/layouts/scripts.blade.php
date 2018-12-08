@@ -18,6 +18,8 @@
 <script src="{{ URL::asset('adminlte/plugins/flot/jquery.flot.categories.min.js') }}"></script>
 <!-- iCheck -->
 <script src="{{ URL::asset('adminlte/plugins/iCheck/icheck.min.js') }}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{URL::asset('adminlte/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
 <script>
     $(function () {
         $('input').iCheck({
@@ -29,3 +31,6 @@
 </script>
 <!-- Select2 -->
 <script src="{{ URL::asset('adminlte/plugins/select2/select2.full.min.js') }}"></script>
+<!-- DataTables -->
+<script src="{{ URL::asset('adminlte/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ URL::asset('adminlte/plugins/datatables/dataTables.bootstrap4.js') }}"></script>

@@ -34,15 +34,15 @@ class OperatorController extends Controller
     # store Operator data to database
     public function store(Request $request)
     {
-      $validator = Validator::make($request->all(), [
-      'nama' => 'required|string|max:255',
-      'email' => 'required|string|email|max:255|unique:users',
-      'password' => 'required|string|min:6',
-      ]);
+    //   $validator = Validator::make($request->all(), [
+    //   'nama' => 'required|string|max:255',
+    //   'email' => 'required|string|email|max:255|unique:users',
+    //   'password' => 'required|string|min:6',
+    //   ]);
 
-      if($validator->fails()){
-              return view('admin.operator.error');
-      }
+    //   if($validator->fails()){
+    //           return view('admin.operator.error');
+    //   }
 
       $user = User::create([
           'nama'     => $request->get('nama'),
@@ -53,29 +53,54 @@ class OperatorController extends Controller
           'password' => Hash::make($request->get('password')),
       ]);
 
-      $token = JWTAuth::fromUser($user);
+    //   $token = JWTAuth::fromUser($user);
 
-      return view('admin.operator.index')->with("users",$users);;
+      return redirect()->route('operator');
     }
 
     # edit Operator data
     public function edit($id)
     {
-        $buzzer = LokasiBuzzer::find($id);
-        $buzzers    = DB::SELECT('SELECT Y.phone, Y.id, Y.nama_buzzer FROM buzzers Y;');
+        $operator   = User::whereId($id)->firstOrFail();
         $wisatas    = DB::SELECT('SELECT Y.id, Y.nama FROM wisatas Y;');
-        if($buzzer == null)
-        {
-            return redirect()->back();
-        }
-        return view('admin.buzzer.edit_mapping')->with("databuzzer",$buzzer)->with("buzzers",$buzzers)->with("wisatas", $wisatas);
+        return view('admin.operator.edit')->with('operator',$operator)->with('wisatas',$wisatas);
+        // $buzzer     = LokasiBuzzer::find($id);
+        // $buzzers    = DB::SELECT('SELECT Y.phone, Y.id, Y.nama_buzzer FROM buzzers Y;');
+        // $wisatas    = DB::SELECT('SELECT Y.id, Y.nama FROM wisatas Y;');
+        // if($buzzer == null)
+        // {
+        //     return redirect()->back();
+        // }
+        // return view('admin.buzzer.edit_mapping')->with("databuzzer",$buzzer)->with("buzzers",$buzzers)->with("wisatas", $wisatas);
     }
 
     # update Operator data to database
     public function update($id, Request $request)
     {
-        $buzzer = LokasiBuzzer::whereId($id)->update($request->except(['_token']));
-        return redirect()->action('LokasiBuzzerController@index');
+        if ($request->get('password') != null)
+        {   
+            $user = User::whereId($id)->update([
+                'nama'     => $request->get('nama'),
+                'email'    => $request->get('email'),
+                'username' => $request->get('username'),
+                'role'     => $request->get('role'),
+                'wisata_id'=> $request->get('wisata_id'),
+                'password' => Hash::make($request->get('password')),
+            ]);
+        } else 
+        {
+            $user = User::whereId($id)->update([
+                'nama'     => $request->get('nama'),
+                'email'    => $request->get('email'),
+                'username' => $request->get('username'),
+                'role'     => $request->get('role'),
+                'wisata_id'=> $request->get('wisata_id'),
+            ]);
+        }
+        return redirect()->route('operator');
+  
+        // $buzzer = LokasiBuzzer::whereId($id)->update($request->except(['_token']));
+        // return redirect()->action('LokasiBuzzerController@index');
     }
 
     # delete Operator data

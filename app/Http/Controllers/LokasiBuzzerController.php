@@ -31,7 +31,7 @@ class LokasiBuzzerController extends Controller
     public function store(Request $request)
     {
         $buzzer = LokasiBuzzer::create($request->all());
-        return redirect()->action('LokasiBuzzerController@create');
+        return redirect()->route('buzzer-mapping');
     }
 
     # edit buzzer data

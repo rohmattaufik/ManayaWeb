@@ -28,6 +28,7 @@
                             <h3 class="card-title">Daftar Operator</h3>
 
                             <div class="card-tools">
+                                <a href="{{route('operator-create')}}" class="btn btn-success">Tambah Operator</a>
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
                                 </button>
@@ -36,7 +37,7 @@
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table class="table m-0">
+                                <table id="table" class="table m-0">
                                     <thead>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama Operator</th>
@@ -44,7 +45,6 @@
                                         <th scope="col">Username</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Tempat Wisata</th>
-                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </thead>
                                     <tbody>
@@ -65,9 +65,8 @@
                                               <td>{{$user->nama}}</td>
                                               <td>{{$user->email}}</td>
                                               <td>{{$user->nama_wisata}}</td>
-                                              <td>Aktif</td>
                                               <td>
-                                                  Edit
+                                                <a href="{{route('operator-edit', $user->id)}}" class="btn btn-info">Edit</a>
                                                   <form method="post" action="{{ url(action('OperatorController@delete')) }}">
                                                       {{ csrf_field() }}
                                                             <input type="hidden" name="id" value="{{$user->id}}" />
@@ -98,4 +97,11 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+@endsection
+@section('new-scripts')
+<script>
+    $(function () {
+        $('#table').DataTable()
+    })
+</script>
 @endsection

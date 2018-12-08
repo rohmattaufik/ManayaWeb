@@ -24,3 +24,7 @@
 <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/select2/select2.min.css') }}">
 <!-- Favicon -->
 <link rel="icon" href="{{ URL::asset('img/logocolor.png') }}">
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="{{URL::asset('adminlte/plugins/datepicker/datepicker3.css')}}">
+<!-- DataTables -->
+<link rel="stylesheet" href="{{URL::asset('adminlte/plugins/datatables/dataTables.bootstrap4.css')}}">

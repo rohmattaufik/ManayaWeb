@@ -241,6 +241,9 @@
                             <h3 class="card-title">Winning The Market By Local Buzzer in</h3>
 
                             <div class="card-tools">
+                                <a href="{{route('buzzer-mapping')}}" class="btn btn-succes">
+                                    Lihat Buzzer
+                                </a>
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
                                 </button>

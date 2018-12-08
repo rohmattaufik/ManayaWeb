@@ -22,12 +22,18 @@ class PengaturanTiketController extends Controller
         {
             $wisata['ticket_mapping'] = TiketMapping::with('wisatawan')->whereWisataId($wisata->id)->get();
         }
+        $tiket_mappings = TiketMapping::with('wisata')->with('wisatawan')->limit(5)->orderBy('id','desc')->get();   
+        $operators      = User::with('wisata')->limit(5)->orderBy('id','desc')->get();
 
-        $operator = User::with('wisata')->whereRole(1)->get();
+        $diskons = Diskon::with('diskonFors')->with('diskonMappings')->limit(5)->orderBy('id','desc')->get();
 
-        $diskon = Diskon::with('diskonFors')->with('diskonMappings')->whereFlagActive(1)->get();
+        $data = [
+            'operators'         => $operators,
+            'tiket_mappings'    => $tiket_mappings,
+            'diskons'           => $diskons            
+        ];
 
-        dd($diskon);
+        return view('admin.pengaturan-tiket')->with('data', $data);
     }
 
 }

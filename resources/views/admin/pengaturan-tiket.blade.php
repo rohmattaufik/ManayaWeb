@@ -57,76 +57,28 @@
                                     <th scope="col">
                                         Harga
                                     </th>
-                                    <th scope="col">
-                                        Action
-                                    </th>
 
                                     </thead>
                                     <tbody>
+                                        @foreach($data['tiket_mappings'] as $key => $tiket)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Wisnus Laki-laki</td>
+                                        <td>{{++$key}}</td>
+                                        <td>{{$tiket['wisatawan']['nama'] .' > '. $tiket['wisata']['nama']}}</td>
                                         <td>
                                             <h4>
                                                 <span class="badge badge-danger">
-                                                    Rp. 201.728
+                                                    Rp. {{ $tiket['harga_tiket']}}
                                                 </span>
                                             </h4>
                                         </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Wisnus Perempuan</td>
-                                        <td>
-                                            <h4>
-                                                <span class="badge badge-danger">
-                                                    Rp. 201.728
-                                                </span>
-                                            </h4>
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
+                                    
                                     <tr>
                                         <td></td>
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    Tambah Produk
-                                                    <i class="fa fa-plus-circle"></i>
-                                                </button>
+                                                <a href="{{ route('tiket')}}" class="btn btn-info">Lihat Semua</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -178,130 +130,26 @@
                                         Operator
                                     </th>
                                     <th scope="col">
-                                        Action
+                                        Lokasi Wisata
                                     </th>
                                     </thead>
                                     <tbody>
+                                    @foreach($data['operators'] as $key => $operator)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{$key+1}}</td>
                                         <td>
-                                            List Operator Terdaftar
+                                            {{$operator->nama}}
                                         </td>
                                         <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
+                                            {{$operator['wisata']['nama']}}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            List Operator Terdaftar
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>
-                                            List Operator Terdaftar
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>
-                                            List Operator Terdaftar
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>
-                                            List Operator Terdaftar
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                     <tr>
                                         <td></td>
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    Tambah Produk
-                                                    <i class="fa fa-plus-circle"></i>
-                                                </button>
+                                                <a href="{{ route('operator')}}" class="btn btn-info">Lihat Semua</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -352,131 +200,21 @@
                                     <th scope="col">
                                         Operator
                                     </th>
-                                    <th scope="col">
-                                        Action
-                                    </th>
                                     </thead>
                                     <tbody>
+                                    @foreach ($data['diskons'] as $key => $diskon)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{++$key}}</td>
                                         <td>
-                                            List Operator Diskon
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
+                                            {{ $diskon['nama_diskon']}}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            List Operator Diskon
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>
-                                            List Operator Diskon
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>
-                                            List Operator Diskon
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>
-                                            List Operator Diskon
-                                        </td>
-                                        <td>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    <i class="fa fa-edit"></i>
-
-                                                </button>
-                                                <button type="submit"
-                                                        data-toggle="tooltip" data-placement="top" title="Remove / Delete"
-                                                        class="btn btn-outline-danger">
-                                                    <i class="fa fa-remove"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                     <tr>
                                         <td></td>
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-success"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"
-                                                        onclick="window.location='admin/edit-tiket'">
-                                                    Tambah Produk
-                                                    <i class="fa fa-plus-circle"></i>
-                                                </button>
+                                                <a href="{{ route('diskon')}}" class="btn btn-info">Lihat Semua</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -498,7 +236,7 @@
 
 
                 </div>
-                <!-- /.col-lg-4 -->
+                <!-- /.col-lg-4 --> 
 
 
             </div>

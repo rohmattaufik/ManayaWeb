@@ -28,6 +28,7 @@
                             <h3 class="card-title">Daftar Tiket</h3>
 
                             <div class="card-tools">
+                                <a href="{{ route('tiket-create') }}" class="btn btn-success">Tambah</a>
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
                                 </button>
@@ -36,44 +37,33 @@
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table class="table m-0">
+                                <table id="table" class="table m-0">
                                     <thead>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama Tiket</th>
                                         <th scope="col">Lokasi Tiket</th>
                                         <th scope="col">Harga</th>
-                                        <th scope="col">Status</th>
                                         <th scope="col">Jumlah Tiket</th>
                                         <th scope="col">Action</th>
                                     </thead>
                                     <tbody>
+                                        @foreach ($tiket_mappings as $key => $tiket_mapping)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Wisman Laki-laki </td>
-                                            <td>Candi Prambanan</td>
-                                            <td>Rp. 80.000,-</td>
-                                            <td>Aktif</td>
-                                            <td>Tidak dibatasi</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
+                                            <td>{{++$key}}</td>
+                                            <td>{{ $tiket_mapping['wisatawan']['nama'] }} </td>
+                                            <td>{{ $tiket_mapping['wisata']['nama'] }}</td>
+                                            <td>{{ $tiket_mapping['harga_tiket'] }}</td>
+                                            <td>{{ !empty($tiket_mapping['jumlah_tiket']) ? $tiket_mapping['jumlah_tiket'] : 'Tidak Dibatasi'}}</td>
+                                            <td>
+                                                <a href="{{ route('tiket-edit', $tiket_mapping['id']) }}" class="btn btn-default">Edit</a>
+                                                <form method="post" action="{{ route('tiket-delete') }}">
+                                                    {{ csrf_field() }}
+                                                            <input type="hidden" name="id" value="{{$tiket_mapping->id}}" />
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Wisman Laki-laki </td>
-                                            <td>Candi Borobudur</td>
-                                            <td>Rp. 30.000,-</td>
-                                            <td>Aktif</td>
-                                            <td>Tidak dibatasi</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Wisman Perempuan </td>
-                                            <td>Candi Prambanan</td>
-                                            <td>Rp. 85.000,-</td>
-                                            <td>Aktif</td>
-                                            <td>Tidak dibatasi</td>
-                                            <td><a href="" class="btn btn-default">Edit</a></td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -96,6 +86,13 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+@endsection
+@section('new-scripts')
+<script>
+    $(function () {
+        $('#table').DataTable()
+    })
+</script>
 @endsection
 
 

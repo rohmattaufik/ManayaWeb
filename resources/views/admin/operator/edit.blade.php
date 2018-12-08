@@ -36,40 +36,44 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="box box-primary">
-                              <form method="post" action="{{ route('operator-submit') }}">
+                              <form method="post" action="{{ route('operator-update', $operator->id) }}">
                                   {{ csrf_field() }}
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="nama">Nama Operator</label>
-                                            <input type="text" class="form-control" name="nama" placeholder="Enter name">
+                                            <input type="text" class="form-control" name="nama" value="{{$operator->nama}}" placeholder="Enter name">
                                         </div>
                                         <div class="form-group">
                                             <label for="usernama">Username Operator</label>
-                                            <input type="text" class="form-control" name="username" placeholder="Enter username">
+                                            <input type="text" class="form-control" name="username" value="{{$operator->username}}" placeholder="Enter username">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email Operator</label>
-                                            <input type="email" class="form-control" name="email" placeholder="Enter email">
+                                            <input type="email" class="form-control" name="email" value="{{$operator->email}}" placeholder="Enter email">
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" name="password" placeholder="Enter password">
+                                            <label for="password">New Password</label>
+                                            <input type="password" class="form-control" name="password"  placeholder="Enter password">
                                         </div>
                                         <div class="form-group">
                                             <label>Pilih Tempat Wisata</label>
                                             <select class="form-control" name="wisata_id">
                                                 <option disabled selected value> -- Select Wisata -- </option>
                                                 @foreach($wisatas as $wisata)
-                                                  <option value="{{$wisata->id}}">{{$wisata->nama}}</option>
+                                                    @if ($wisata->id == $operator->wisata_id)
+                                                        <option value="{{$wisata->id}}" selected="true">{{$wisata->nama}}</option>
+                                                    @else
+                                                        <option value="{{$wisata->id}}">{{$wisata->nama}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Role</label>
                                             <select class="form-control" name="role">
-                                                <option value="1">operator</option>
-                                                <option value="2">administrator</option>
-                                                <option value="3">superadmin</option>
+                                                <option value="1" {{$operator->role == 1 ? "selected='true'": ""}}>operator</option>
+                                                <option value="2" {{$operator->role == 2 ? "selected='true'": ""}}>administrator</option>
+                                                <option value="3" {{$operator->role == 3 ? "selected='true'": ""}}>superadmin</option>
                                             </select>
                                         </div>
                                     </div>

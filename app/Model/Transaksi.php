@@ -14,7 +14,7 @@ class Transaksi extends Model
       'kategori_wisatawan_id',
       'asal_provinsi',
       'asal_kabupaten',
-      'asal_kecamatan',
+      'asal_negara',
       'total_harga',
       'is_lunas',
       'total_diskon',

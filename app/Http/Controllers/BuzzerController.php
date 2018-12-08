@@ -15,21 +15,23 @@ class BuzzerController extends Controller
     public function index()
     {
         $buzzers    = DB::SELECT('SELECT Y.phone, Y.id, Y.nama_buzzer FROM buzzers Y;');
+        dd($buzzers);
         return view('admin.buzzer.index')->with("buzzers",$buzzers);
     }
 
     # create buzzer data
     public function create()
     {
-        $buzzers    = DB::SELECT('SELECT Y.phone, Y.id, Y.nama_buzzer FROM buzzers Y;');
-        return view('admin.buzzer.crudbuzzer')->with("buzzers",$buzzers);
+        // $buzzers    = DB::SELECT('SELECT Y.phone, Y.id, Y.nama_buzzer FROM buzzers Y;');
+        // return view('admin.buzzer.crudbuzzer')->with("buzzers",$buzzers);
+        return view('admin.buzzer.form');
     }
 
     # store buzzer data to database
     public function store(Request $request)
     {
         $buzzer = Buzzer::create($request->all());
-        return redirect()->back();
+        return redirect()->route('buzzer-mapping-create');
     }
 
     # edit buzzer data
@@ -40,7 +42,7 @@ class BuzzerController extends Controller
         {
             return redirect()->back();
         }
-        return view('admin.buzzer.edit')->with("buzzer",$buzzer);
+        return view('admin.buzzer.form')->with("buzzer",$buzzer);
     }
 
     # update buzzer data to database

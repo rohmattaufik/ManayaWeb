@@ -85,7 +85,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="poin">Poin</label>
-                                            <input type="number" name="poin" class="form-control" name="poin" value="{{$databuzzer->poin}}" placeholder="Enter poin">
+                                            <input type="number" name="poin" class="form-control" value="{{$databuzzer->poin}}" placeholder="Enter poin">
                                         </div>
                                     </div>
 

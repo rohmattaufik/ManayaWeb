@@ -81,13 +81,27 @@ class TransaksiBaruController extends Controller
         return $data_out;
     }
 
-    public function store(Request $requests)
+    public function store(Request $request)
     {
-        DB::transaction(function () {
-            foreach($requests as $request)
+       // $data = (array) $request;
+        // DB::transaction(function () {
+            
+            // return $request;
+            // $request = json_encode($request,false);
+            // return $request[0]['user'];
+            // return json_decode($request->user, false);
+            // return json_encode($request, 2);
+            // return response()->json(['data'=>$request]);
+            // return collect($request);
+            
+            foreach(collect($request) as $request_item)
             {
+                // return $request_item['user'];
+                // return json_encode($request_item);
+                // return response()->json(['data' => $request_item]);  
                 $id_kategori = 0;
-                foreach($request['kategori_wisatawan'] as $item)
+                
+                foreach($request_item['kategori_wisatawan'] as $item)
                 {
                     if($item['active'] == true)
                     {
@@ -96,31 +110,31 @@ class TransaksiBaruController extends Controller
                     }
                 }
                 $transaksi  = Transaksi::create([
-                    "user_id"               => $request['user']['id'],
-                    "wisata_id"             => $request['user']['wisata_id'],
+                    "user_id"               => $request_item['user']['id'],
+                    "wisata_id"             => $request_item['user']['wisata_id'],
                     "kategori_wisatawan_id" => $id_kategori,
-                    "asal_provinsi"         => $request['provinsi'],
-                    "asal_kabupaten"        => $request['kabupaten'],
-                    "asal_kecamatan"        => $request['kecamatan'],
-                    "total_harga"           => $request['total'] + $request['total_diskon'],
-                    "total_diskon"          => $request['total_diskon'],
-                    "harga_akhir"           => $request['total'],
+                    "asal_provinsi"         => $request_item['provinsi'],
+                    "asal_kabupaten"        => $request_item['kabupaten'],
+                    "asal_negara"           => $request_item['negara'],
+                    "total_harga"           => $request_item['total'] + $request_item['total_diskon'],
+                    "total_diskon"          => $request_item['total_diskon'],
+                    "harga_akhir"           => $request_item['total'],
                     "is_lunas"              => 1,
-                    "jumlah_bayar"          => $request['jumlah_bayar'],
-                    "email_wisatawan"       => $request['email']
+                    "jumlah_bayar"          => $request_item['jumlah_bayar'],
+                    "email_wisatawan"       => $request_item['email']
                 ]);
                 $data_diskon    = DiskonMapping::with('wisata')
                                     ->with('diskon')
-                                    ->whereWisataId($request['user']->wisata_id)
+                                    ->whereWisataId($request_item['user']['wisata_id'])
                                     ->get();
                 foreach($data_diskon as $diskon)
                 {
                     $diskonTransaksi    = DiskonTransaksi::create([
-                        'diskon_id' => $diskon->diskon_id,
+                        'diskon_id' => $diskon['diskon_id'],
                         'transaksi_id' => $transaksi['id'],
                     ]);
                 }
-                foreach($request['tiket'] as $detail)
+                foreach($request_item['tiket'] as $detail)
                 {
                     TransaksiDetail::create([
                         "wisatawan_id" => $detail['wisatawan_id'],
@@ -129,14 +143,14 @@ class TransaksiBaruController extends Controller
                         "total_harga"=> $detail['total']
                     ]);
                     
-                    $mapping = TiketMapping::whereId($detail['id'])>first();
+                    $mapping = TiketMapping::whereId($detail['id'])->first();
                     $mapping->jumlah_tiket -= $detail['jumlah'];
                     $mapping->save(); 
                 }   
 
                 return response('Success', 200);
             }
-        });       
+        // });       
     }
 
 

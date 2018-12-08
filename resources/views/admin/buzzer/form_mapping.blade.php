@@ -64,7 +64,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" name="waktu_mulai" class="form-control pull-right" placeholder="yyyy-mm-dd" id="datepicker">
+                                                <input type="text" name="waktu_mulai" class="form-control pull-right datepicker" placeholder="yyyy-mm-dd" id="datepicker">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -74,12 +74,12 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" name="waktu_selesai" class="form-control pull-right" placeholder="yyyy-mm-dd" id="datepicker">
+                                                <input type="text" name="waktu_selesai" class="form-control pull-right datepicker" placeholder="yyyy-mm-dd" id="datepicker">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="poin">Poin</label>
-                                            <input type="number" name="poin" class="form-control" name="poin" placeholder="Enter poin">
+                                            <input type="number" name="poin" class="form-control" placeholder="Enter poin">
                                         </div>
                                     </div>
 
@@ -106,4 +106,12 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+@endsection
+@section('new-scripts')
+<script>
+$('.datepicker').datepicker({
+    autoclose: true,
+    format : 'yyyy-mm-dd'
+});
+</script>
 @endsection

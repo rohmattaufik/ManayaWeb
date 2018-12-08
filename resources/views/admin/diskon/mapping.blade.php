@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
                         <i class="fa fa-ticket"></i>
-                        Tambah Buzzer
+                        Atur Diskon
                     </h1>
                 </div>
             </div><!-- /.row -->
@@ -25,7 +25,7 @@
                     {{--Tambah Buzzer--}}
                     <div class="card card-primary card-outline">
                         <div class="card-header border-transparent">
-                            <h3 class="card-title">Tambah Buzzer</h3>
+                            <h3 class="card-title">Atur Diskon</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
@@ -36,19 +36,32 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="box box-primary">
-                                <form role="form" method="post" action="{{ !empty($buzzer) == TRUE ? '/admin/buzzer/update/'.$buzzer->id : '/admin/buzzer/submit'}}">
+                              <form method="post" action="{{ route('diskon-mapping-submit') }}">
+                                  {{ csrf_field() }}
                                     <div class="box-body">
                                         <div class="form-group">
-                                            <label for="nama">Nama Buzzer</label>
-                                            <input type="text" class="form-control" name="nama_buzzer" placeholder="Enter name" value="{{ !empty($buzzer) == TRUE ? ''.$buzzer->nama : ''}}">
+                                            <label>Pilih Diskon</label>
+                                            <select class="form-control" name="diskon_id">
+                                                <option disabled selected value> -- Select Diskon -- </option>
+                                                @foreach($diskons as $diskon)
+                                                  <option value="{{$diskon->id}}">{{$diskon->nama_diskon}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="phone">Phone</label>
-                                            <input type="text" class="form-control" name="phone" placeholder="Phone" value="{{ !empty($buzzer) == TRUE ? ''.$buzzer->phone : ''}}">
+                                            <label>Pilih Tempat Wisata</label>
+                                            <!-- checkbox -->
+                                            @foreach($wisatas as $wisata)
+                                            <div class="checkbox">
+                                                <label>
+                                                <input name="wisata_id[]" value='{{$wisata->id}}' type="checkbox">
+                                                    {{ $wisata['nama']}}
+                                                </label>
+                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                        <!-- /.box-body -->
-                        
+
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
@@ -56,7 +69,7 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
-                    
+
                     <!-- /.card-footer -->
                     </div>
                     {{--end per kategori--}}
@@ -73,5 +86,11 @@
     </div>
     <!-- /.content -->
 @endsection
-
-
+@section('new-scripts')
+<script>
+$('.datepicker').datepicker({
+    autoclose: true,
+    format : 'yyyy-mm-dd'
+});
+</script>
+@endsection

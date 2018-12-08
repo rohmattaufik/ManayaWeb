@@ -28,6 +28,8 @@
                             <h3 class="card-title">Daftar Buzzer</h3>
 
                             <div class="card-tools">
+                                <a href="{{route('buzzer-create')}}" class="btn btn-success">Tambah Buzzer</a>
+                                <a href="{{route('buzzer-mapping-create')}}" class="btn btn-info">Mapping Buzzer</a>
                                 <button type="button" class="btn btn-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
                                 </button>
@@ -36,7 +38,7 @@
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table class="table m-0">
+                                <table id="table" class="table m-0">
                                     <thead>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama Buzzer</th>
@@ -93,4 +95,11 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+@endsection
+@section('new-scripts')
+<script>
+    $(function () {
+        $('#table').DataTable()
+    })
+</script>
 @endsection
